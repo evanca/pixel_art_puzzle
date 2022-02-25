@@ -9,6 +9,8 @@ import 'package:pixel_art_puzzle/layout/layout.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 
+import '../../preferences/preferences.dart';
+
 abstract class _BoardSize {
   static double small = 312;
   static double medium = 424;
@@ -87,7 +89,18 @@ class _DashatarPuzzleBoardState extends State<DashatarPuzzleBoard> {
           dimension: _BoardSize.large,
           child: child,
         ),
-        child: (_) => Stack(children: widget.tiles),
+        child: (_) {
+          final spacing = {0: 4.0, 1: 3.0, 2: 2.0, 3: 1.0};
+
+          final currentDifficulty = Prefs().difficultyLevel.getValue();
+
+          return GridView.count(
+            mainAxisSpacing: spacing[currentDifficulty]!,
+            crossAxisSpacing: spacing[currentDifficulty]!,
+            crossAxisCount: Prefs().puzzleSize.getValue(),
+            children: widget.tiles,
+          );
+        },
       ),
     );
   }

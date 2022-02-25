@@ -11,6 +11,8 @@ import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
 
+import '../../preferences/preferences.dart';
+
 /// {@template puzzle_page}
 /// The root page of the puzzle UI.
 ///
@@ -89,7 +91,7 @@ class PuzzleView extends StatelessWidget {
                 ),
               ),
               BlocProvider(
-                create: (context) => PuzzleBloc(4)
+                create: (context) => PuzzleBloc(Prefs().puzzleSize.getValue())
                   ..add(
                     const PuzzleInitialized(
                       shufflePuzzle: shufflePuzzle,

@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
+
+import '../../picture_upload/picture_upload_helper.dart';
 
 /// {@template dashatar_theme_picker}
 /// Displays the Dashatar theme picker to choose between
@@ -25,8 +24,6 @@ class DashatarThemePicker extends StatefulWidget {
 
   static const _activeThemeNormalSize = 120.0;
   static const _activeThemeSmallSize = 65.0;
-  static const _inactiveThemeNormalSize = 96.0;
-  static const _inactiveThemeSmallSize = 50.0;
 
   final AudioPlayerFactory _audioPlayerFactory;
 
@@ -51,9 +48,6 @@ class _DashatarThemePickerState extends State<DashatarThemePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final themeState = context.watch<DashatarThemeBloc>().state;
-    final activeTheme = themeState.theme;
-
     return AudioControlListener(
       audioPlayer: _audioPlayer,
       child: ResponsiveLayoutBuilder(
@@ -65,58 +59,18 @@ class _DashatarThemePickerState extends State<DashatarThemePicker> {
           final activeSize = isSmallSize
               ? DashatarThemePicker._activeThemeSmallSize
               : DashatarThemePicker._activeThemeNormalSize;
-          final inactiveSize = isSmallSize
-              ? DashatarThemePicker._inactiveThemeSmallSize
-              : DashatarThemePicker._inactiveThemeNormalSize;
 
           return SizedBox(
             key: const Key('dashatar_theme_picker'),
             height: activeSize,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                themeState.themes.length,
-                (index) {
-                  final theme = themeState.themes[index];
-                  final isActiveTheme = theme == activeTheme;
-                  final padding = index > 0 ? (isSmallSize ? 4.0 : 8.0) : 0.0;
-                  final size = isActiveTheme ? activeSize : inactiveSize;
-
-                  return Padding(
-                    padding: EdgeInsets.only(left: padding),
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        key: Key('dashatar_theme_picker_$index'),
-                        onTap: () async {
-                          if (isActiveTheme) {
-                            return;
-                          }
-
-                          // Update the current Dashatar theme.
-                          context
-                              .read<DashatarThemeBloc>()
-                              .add(DashatarThemeChanged(themeIndex: index));
-
-                          // Play the audio of the current Dashatar theme.
-                          await _audioPlayer.setAsset(theme.audioAsset);
-                          unawaited(_audioPlayer.play());
-                        },
-                        child: AnimatedContainer(
-                          width: size,
-                          height: size,
-                          curve: Curves.easeInOut,
-                          duration: const Duration(milliseconds: 350),
-                          child: Image.asset(
-                            theme.themeAsset,
-                            fit: BoxFit.fill,
-                            semanticLabel: theme.semanticsLabel(context),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: AnimatedContainer(
+                width: activeSize,
+                height: activeSize,
+                curve: Curves.easeInOut,
+                duration: const Duration(milliseconds: 350),
+                child: PictureUploadHelper.instance.outputCropped,
               ),
             ),
           );

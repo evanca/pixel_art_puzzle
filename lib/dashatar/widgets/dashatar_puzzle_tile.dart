@@ -12,11 +12,7 @@ import 'package:pixel_art_puzzle/models/models.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/theme/themes/themes.dart';
 
-abstract class _TileSize {
-  static double small = 75;
-  static double medium = 100;
-  static double large = 112;
-}
+import '../../helpers/custom_tile_creator.dart';
 
 /// {@template dashatar_puzzle_tile}
 /// Displays the puzzle tile associated with [tile]
@@ -89,7 +85,6 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
   @override
   Widget build(BuildContext context) {
     final size = widget.state.puzzle.getDimension();
-    final theme = context.select((DashatarThemeBloc bloc) => bloc.state.theme);
     final status =
         context.select((DashatarPuzzleBloc bloc) => bloc.state.status);
     final hasStarted = status == DashatarPuzzleStatus.started;
@@ -115,17 +110,17 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
         child: ResponsiveLayoutBuilder(
           small: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_small_${widget.tile.value}'),
-            dimension: _TileSize.small,
+            dimension: double.infinity,
             child: child,
           ),
           medium: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_medium_${widget.tile.value}'),
-            dimension: _TileSize.medium,
+            dimension: double.infinity,
             child: child,
           ),
           large: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_large_${widget.tile.value}'),
-            dimension: _TileSize.large,
+            dimension: double.infinity,
             child: child,
           ),
           child: (_) => MouseRegion(
@@ -150,13 +145,14 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
                         unawaited(_audioPlayer?.replay());
                       }
                     : null,
-                icon: Image.asset(
-                  theme.dashAssetForTile(widget.tile),
-                  semanticLabel: context.l10n.puzzleTileLabelText(
+                icon: Semantics(
+                  label: context.l10n.puzzleTileLabelText(
                     widget.tile.value.toString(),
                     widget.tile.currentPosition.x.toString(),
                     widget.tile.currentPosition.y.toString(),
                   ),
+                  child: CustomTileCreator
+                      .instance.tileImages[widget.tile.value - 1],
                 ),
               ),
             ),
