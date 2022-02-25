@@ -16,6 +16,7 @@ import 'package:pixel_art_puzzle/app/home_page.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 
+import '../../colors/colors.dart';
 import '../../typography/text_styles.dart';
 
 class App extends StatefulWidget {
@@ -113,6 +114,7 @@ class _AppState extends State<App> {
             bodyText2: PuzzleTextStyle.body,
             bodyText1: PuzzleTextStyle.body,
             subtitle1: PuzzleTextStyle.bodySmall),
+        iconTheme: const IconThemeData(size: 48),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
