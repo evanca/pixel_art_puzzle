@@ -16,7 +16,6 @@ import 'package:pixel_art_puzzle/app/home_page.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 
-import '../../colors/colors.dart';
 import '../../typography/text_styles.dart';
 
 class App extends StatefulWidget {

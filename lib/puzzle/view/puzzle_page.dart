@@ -10,6 +10,7 @@ import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
+import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
 import '../../preferences/preferences.dart';
 
@@ -25,39 +26,7 @@ class PuzzlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => DashatarThemeBloc(
-            themes: const [
-              PixelArtTheme(),
-            ],
-          ),
-        ),
-        BlocProvider(
-          create: (_) => DashatarPuzzleBloc(
-            secondsToBegin: 3,
-            ticker: const Ticker(),
-          ),
-        ),
-        BlocProvider(
-          create: (context) => ThemeBloc(
-            initialThemes: [
-              context.read<DashatarThemeBloc>().state.theme,
-            ],
-          ),
-        ),
-        BlocProvider(
-          create: (_) => TimerBloc(
-            ticker: const Ticker(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => AudioControlBloc(),
-        ),
-      ],
-      child: const PuzzleView(),
-    );
+    return const PuzzleMultiBlocProvider(child: PuzzleView());
   }
 }
 
@@ -70,14 +39,17 @@ class PuzzleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-
     const shufflePuzzle = false;
 
     return Scaffold(
       body: AnimatedContainer(
         duration: PuzzleThemeAnimationDuration.backgroundColorChange,
-        decoration: BoxDecoration(color: theme.backgroundColor),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/pixel_bg.png'),
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.none),
+        ),
         child: BlocListener<DashatarThemeBloc, DashatarThemeState>(
           listener: (context, state) {
             final dashatarTheme = context.read<DashatarThemeBloc>().state.theme;
