@@ -130,13 +130,12 @@ class PuzzleTextStyle {
     );
   }
 
-  static const _baseTextStyle = TextStyle(
-    fontFamily: 'GoogleSans',
+  static final _baseTextStyle = GoogleFonts.ubuntu(
     color: PuzzleColors.black,
     fontWeight: PuzzleFontWeight.regular,
   );
 
-  static final _bodyTextStyle = GoogleFonts.roboto(
+  static final _bodyTextStyle = GoogleFonts.ubuntu(
     color: PuzzleColors.black,
     fontWeight: PuzzleFontWeight.regular,
   );

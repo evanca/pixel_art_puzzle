@@ -16,6 +16,8 @@ import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 
+import '../../typography/text_styles.dart';
+
 class App extends StatefulWidget {
   const App({Key? key, ValueGetter<PlatformHelper>? platformHelperFactory})
       : _platformHelperFactory = platformHelperFactory ?? getPlatformHelper,
@@ -173,6 +175,10 @@ class _AppState extends State<App> {
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF13B9FF),
         ),
+        textTheme: Typography(platform: TargetPlatform.iOS).black.copyWith(
+            bodyText2: PuzzleTextStyle.body,
+            bodyText1: PuzzleTextStyle.body,
+            subtitle1: PuzzleTextStyle.bodySmall),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
