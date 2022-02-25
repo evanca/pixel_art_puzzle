@@ -131,12 +131,12 @@ class PuzzleTextStyle {
   }
 
   static final _baseTextStyle = GoogleFonts.ubuntu(
-    color: PuzzleColors.black,
+    color: PuzzleColors.pixel50,
     fontWeight: PuzzleFontWeight.regular,
   );
 
   static final _bodyTextStyle = GoogleFonts.ubuntu(
-    color: PuzzleColors.black,
+    color: PuzzleColors.pixel50,
     fontWeight: PuzzleFontWeight.regular,
   );
 }

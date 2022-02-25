@@ -12,9 +12,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;
+import 'package:pixel_art_puzzle/app/home_page.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
-import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 
 import '../../typography/text_styles.dart';
 
@@ -119,7 +119,7 @@ class _AppState extends State<App> {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const PuzzlePage(),
+      home: const HomePage(),
     );
   }
 }

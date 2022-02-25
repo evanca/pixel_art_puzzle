@@ -1,5 +1,7 @@
 {
     "@@locale": "en",
+    "enterPlayerName": "Enter player name:",
+    "globalNext": "Next",
     "puzzleChangeTooltip": "Changing the theme will reset your score",
     "@puzzleChangeTooltip": {
         "description": "Shown as a tooltip for puzzle menu buttons"
