@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
-import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
 
 import '../../picture_upload/picture_upload_helper.dart';
 
-/// {@template dashatar_theme_picker}
-/// Displays the Dashatar theme picker to choose between
-/// [DashatarThemeState.themes].
-///
-/// By default allows to choose between [BlueDashatarTheme],
-/// [PixelArtTheme] or [YellowDashatarTheme].
-/// {@endtemplate}
-class DashatarThemePicker extends StatefulWidget {
-  /// {@macro dashatar_theme_picker}
-  const DashatarThemePicker({
+class PuzzleThumbnailImage extends StatefulWidget {
+  const PuzzleThumbnailImage({
     Key? key,
     AudioPlayerFactory? audioPlayer,
   })  : _audioPlayerFactory = audioPlayer ?? getAudioPlayer,
@@ -28,10 +19,10 @@ class DashatarThemePicker extends StatefulWidget {
   final AudioPlayerFactory _audioPlayerFactory;
 
   @override
-  State<DashatarThemePicker> createState() => _DashatarThemePickerState();
+  State<PuzzleThumbnailImage> createState() => _PuzzleThumbnailImageState();
 }
 
-class _DashatarThemePickerState extends State<DashatarThemePicker> {
+class _PuzzleThumbnailImageState extends State<PuzzleThumbnailImage> {
   late final AudioPlayer _audioPlayer;
 
   @override
@@ -57,8 +48,8 @@ class _DashatarThemePickerState extends State<DashatarThemePicker> {
         child: (currentSize) {
           final isSmallSize = currentSize == ResponsiveLayoutSize.small;
           final activeSize = isSmallSize
-              ? DashatarThemePicker._activeThemeSmallSize
-              : DashatarThemePicker._activeThemeNormalSize;
+              ? PuzzleThumbnailImage._activeThemeSmallSize
+              : PuzzleThumbnailImage._activeThemeNormalSize;
 
           return SizedBox(
             key: const Key('dashatar_theme_picker'),

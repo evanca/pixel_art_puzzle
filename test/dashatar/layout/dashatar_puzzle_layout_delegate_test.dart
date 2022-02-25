@@ -157,7 +157,7 @@ void main() {
           );
 
           expect(find.byType(DashatarPuzzleActionButton), findsNothing);
-          expect(find.byType(DashatarThemePicker), findsNothing);
+          expect(find.byType(PuzzleThumbnailImage), findsNothing);
         });
 
         testWidgets('renders DashatarCountdown', (tester) async {
@@ -213,7 +213,7 @@ void main() {
             audioControlBloc: audioControlBloc,
           );
 
-          expect(find.byType(DashatarThemePicker), findsOneWidget);
+          expect(find.byType(PuzzleThumbnailImage), findsOneWidget);
         });
 
         testWidgets('renders DashatarCountdown', (tester) async {
@@ -269,7 +269,7 @@ void main() {
             audioControlBloc: audioControlBloc,
           );
 
-          expect(find.byType(DashatarThemePicker), findsOneWidget);
+          expect(find.byType(PuzzleThumbnailImage), findsOneWidget);
         });
 
         testWidgets('renders DashatarCountdown', (tester) async {
@@ -312,7 +312,7 @@ void main() {
           audioControlBloc: audioControlBloc,
         );
 
-        expect(find.byType(DashatarThemePicker), findsOneWidget);
+        expect(find.byType(PuzzleThumbnailImage), findsOneWidget);
       });
 
       testWidgets(
@@ -334,7 +334,7 @@ void main() {
           audioControlBloc: audioControlBloc,
         );
 
-        expect(find.byType(DashatarThemePicker), findsNothing);
+        expect(find.byType(PuzzleThumbnailImage), findsNothing);
         expect(find.byType(SizedBox), findsOneWidget);
       });
 
@@ -357,7 +357,7 @@ void main() {
           audioControlBloc: audioControlBloc,
         );
 
-        expect(find.byType(DashatarThemePicker), findsNothing);
+        expect(find.byType(PuzzleThumbnailImage), findsNothing);
         expect(find.byType(SizedBox), findsOneWidget);
       });
     });
