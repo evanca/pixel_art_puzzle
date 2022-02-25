@@ -15,19 +15,19 @@ class PixelArtTheme extends DashatarTheme {
       context.l10n.dashatarGreenDashLabelText;
 
   @override
-  Color get backgroundColor => PuzzleColors.greenPrimary;
+  Color get backgroundColor => PuzzleColors.pixelPrimary;
 
   @override
-  Color get defaultColor => PuzzleColors.green90;
+  Color get defaultColor => PuzzleColors.pixel90;
 
   @override
-  Color get buttonColor => PuzzleColors.green50;
+  Color get buttonColor => PuzzleColors.pixel50;
 
   @override
-  Color get menuInactiveColor => PuzzleColors.green50;
+  Color get menuInactiveColor => PuzzleColors.pixel50;
 
   @override
-  Color get countdownColor => PuzzleColors.green50;
+  Color get countdownColor => PuzzleColors.pixel50;
 
   @override
   String get themeAsset => 'assets/images/dashatar/gallery/green.png';
