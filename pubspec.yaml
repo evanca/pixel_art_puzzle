@@ -1,4 +1,4 @@
-name: very_good_slide_puzzle
+name: pixel_art_puzzle
 description: A Very Good Project created by Very Good CLI.
 version: 1.0.0+1
 publish_to: none
@@ -28,7 +28,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.2.0
-  very_good_analysis: ^2.4.0
+  flutter_lints: ^1.0.0
 
 flutter:
   generate: true
