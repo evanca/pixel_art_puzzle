@@ -8,6 +8,7 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  glassmorphism: ^3.0.0
   bloc: ^8.0.1
   equatable: ^2.0.3
   fake_async: ^1.2.0
@@ -39,6 +40,3 @@ flutter:
     - assets/images/audio_control/
     - assets/images/dashatar/gallery/
     - assets/images/dashatar/success/
-    - assets/images/dashatar/green/
-    - assets/images/dashatar/blue/
-    - assets/images/dashatar/yellow/
