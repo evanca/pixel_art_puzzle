@@ -37,7 +37,7 @@ void main() {
       );
 
       dashatarThemeBloc = MockDashatarThemeBloc();
-      dashatarTheme = GreenDashatarTheme();
+      dashatarTheme = PixelArtTheme();
       final dashatarThemeState = DashatarThemeState(
         themes: [dashatarTheme],
         theme: dashatarTheme,

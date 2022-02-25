@@ -7,7 +7,6 @@ import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
 import 'package:pixel_art_puzzle/models/models.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
-import 'package:pixel_art_puzzle/simple/simple.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
@@ -29,7 +28,7 @@ class PuzzlePage extends StatelessWidget {
         BlocProvider(
           create: (_) => DashatarThemeBloc(
             themes: const [
-              GreenDashatarTheme(),
+              PixelArtTheme(),
             ],
           ),
         ),
@@ -42,7 +41,6 @@ class PuzzlePage extends StatelessWidget {
         BlocProvider(
           create: (context) => ThemeBloc(
             initialThemes: [
-              const SimpleTheme(),
               context.read<DashatarThemeBloc>().state.theme,
             ],
           ),
@@ -72,8 +70,7 @@ class PuzzleView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
 
-    /// Shuffle only if the current theme is Simple.
-    final shufflePuzzle = theme is SimpleTheme;
+    const shufflePuzzle = false;
 
     return Scaffold(
       body: AnimatedContainer(
@@ -94,7 +91,7 @@ class PuzzleView extends StatelessWidget {
               BlocProvider(
                 create: (context) => PuzzleBloc(4)
                   ..add(
-                    PuzzleInitialized(
+                    const PuzzleInitialized(
                       shufflePuzzle: shufflePuzzle,
                     ),
                   ),
@@ -115,15 +112,10 @@ class _Puzzle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final state = context.select((PuzzleBloc bloc) => bloc.state);
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return Stack(
           children: [
-            if (theme is SimpleTheme)
-              theme.layoutDelegate.backgroundBuilder(state),
             SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
@@ -137,8 +129,6 @@ class _Puzzle extends StatelessWidget {
                 ),
               ),
             ),
-            if (theme is! SimpleTheme)
-              theme.layoutDelegate.backgroundBuilder(state),
           ],
         );
       },
@@ -449,8 +439,8 @@ class PuzzleMenuItem extends StatelessWidget {
 
                 // Initialize the puzzle board for the newly selected theme.
                 context.read<PuzzleBloc>().add(
-                      PuzzleInitialized(
-                        shufflePuzzle: theme is SimpleTheme,
+                      const PuzzleInitialized(
+                        shufflePuzzle: false,
                       ),
                     );
               },

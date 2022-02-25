@@ -13,7 +13,7 @@ import 'package:pixel_art_puzzle/layout/layout.dart';
 /// [DashatarThemeState.themes].
 ///
 /// By default allows to choose between [BlueDashatarTheme],
-/// [GreenDashatarTheme] or [YellowDashatarTheme].
+/// [PixelArtTheme] or [YellowDashatarTheme].
 /// {@endtemplate}
 class DashatarThemePicker extends StatefulWidget {
   /// {@macro dashatar_theme_picker}

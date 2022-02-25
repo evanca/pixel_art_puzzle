@@ -3,12 +3,12 @@ import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 
-/// {@template green_dashatar_theme}
-/// The green dashatar puzzle theme.
+/// {@template pixel_art_theme}
+/// The pixel art puzzle theme.
 /// {@endtemplate}
-class GreenDashatarTheme extends DashatarTheme {
-  /// {@macro green_dashatar_theme}
-  const GreenDashatarTheme() : super();
+class PixelArtTheme extends DashatarTheme {
+  /// {@macro pixel_art_theme}
+  const PixelArtTheme() : super();
 
   @override
   String semanticsLabel(BuildContext context) =>
