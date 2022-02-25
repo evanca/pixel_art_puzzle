@@ -7,6 +7,7 @@ import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 import '../colors/colors.dart';
 import '../layout/responsive_layout_builder.dart';
 import '../preferences/preferences.dart';
+import '../select_difficulty_page.dart';
 import '../theme/widgets/puzzle_button.dart';
 import '../widgets/glassmorphic_container.dart';
 
@@ -70,9 +71,17 @@ class HomePage extends StatelessWidget {
                   const Spacer()
                 ],
               ),
-              SizedBox(height: 32.0),
+              const SizedBox(height: 32.0),
               PuzzleButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) =>
+                          const SelectDifficultyPage(),
+                    ),
+                  );
+                },
                 child: Text(context.l10n.globalNext.toUpperCase()),
               ),
               SizedBox(height: isSmallSize ? 16.0 : 32.0),

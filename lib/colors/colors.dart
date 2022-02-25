@@ -25,4 +25,9 @@ abstract class PuzzleColors {
 
   /// Pixel 50
   static const Color pixel50 = Color(0xFF464D77);
+
+  static const Color difficultyEasy = Color(0xFFC1E8F3);
+  static const Color difficultyMedium = Color(0xFFACE0EF);
+  static const Color difficultyHard = Color(0xFF96D8EB);
+  static const Color difficultyInsane = Color(0xFF81D0E7);
 }
