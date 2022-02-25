@@ -26,26 +26,19 @@ class AudioControl extends StatelessWidget {
         child: AnimatedSwitcher(
           duration: PuzzleThemeAnimationDuration.backgroundColorChange,
           child: ResponsiveLayoutBuilder(
-            key: Key(audioAsset),
-            small: (_, __) => Image.asset(
-              audioAsset,
-              key: const Key('audio_control_small'),
-              width: 24,
-              height: 24,
-            ),
-            medium: (_, __) => Image.asset(
-              audioAsset,
-              key: const Key('audio_control_medium'),
-              width: 33,
-              height: 33,
-            ),
-            large: (_, __) => Image.asset(
-              audioAsset,
-              key: const Key('audio_control_large'),
-              width: 33,
-              height: 33,
-            ),
-          ),
+              key: Key(audioAsset),
+              small: (_, child) => child!,
+              medium: (_, child) => child!,
+              large: (_, child) => child!,
+              child: (currentSize) {
+                return Image.asset(
+                  audioAsset,
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.none,
+                  width: 48,
+                  height: 48,
+                );
+              }),
         ),
       ),
     );

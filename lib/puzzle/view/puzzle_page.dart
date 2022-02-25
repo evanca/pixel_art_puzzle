@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
@@ -148,46 +149,91 @@ class PuzzleHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 96,
-      child: ResponsiveLayoutBuilder(
-        small: (context, child) => Stack(
+    final isSmallSize =
+        SizeHelper.getSize(context) == ResponsiveLayoutSize.small;
+
+    final padding = isSmallSize ? 8.0 : 16.0;
+
+    return ResponsiveLayoutBuilder(
+      small: (context, child) => Padding(
+        padding: EdgeInsets.all(padding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Align(
-              child: PuzzleLogo(),
+            SizedBox(
+              height: padding,
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 34),
-                child: AudioControl(key: audioControlKey),
-              ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/user_12px.png',
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.none,
+                  width: 48,
+                  height: 48,
+                ),
+                SizedBox(
+                  width: padding,
+                ),
+                Expanded(
+                  child: Text(
+                    Prefs().username.getValue(),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.pressStart2p(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: [
+                const DashatarTimer(mainAxisAlignment: MainAxisAlignment.start),
+                const Spacer(),
+                Image.asset(
+                  'assets/images/trophy_12px.png',
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.none,
+                  width: 48,
+                  height: 48,
+                ),
+                SizedBox(
+                  width: padding,
+                ),
+                AudioControl(key: audioControlKey),
+              ],
+            ),
+            SizedBox(
+              height: padding,
             ),
           ],
         ),
-        medium: (context, child) => Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 50,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              PuzzleLogo(),
-              PuzzleMenu(),
-            ],
-          ),
+      ),
+      medium: (context, child) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 50,
         ),
-        large: (context, child) => Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 50,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              PuzzleLogo(),
-              PuzzleMenu(),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            PuzzleLogo(),
+            PuzzleMenu(),
+          ],
+        ),
+      ),
+      large: (context, child) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 50,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            PuzzleLogo(),
+            PuzzleMenu(),
+          ],
         ),
       ),
     );
@@ -447,7 +493,7 @@ class PuzzleMenuItem extends StatelessWidget {
                     );
               },
               child: AnimatedDefaultTextStyle(
-                duration: PuzzleThemeAnimationDuration.textStyle,
+                duration: PuzzleThemeAnimationDuration.duration,
                 style: PuzzleTextStyle.headline5.copyWith(
                   color: isCurrentTheme
                       ? currentTheme.menuActiveColor

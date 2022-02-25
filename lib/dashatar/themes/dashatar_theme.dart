@@ -18,7 +18,7 @@ abstract class DashatarTheme extends PuzzleTheme {
 
   @override
   String get audioControlOnAsset =>
-      'assets/images/audio_control/dashatar_on.png';
+      'assets/images/audio_control/speaker_12px.png';
 
   @override
   bool get hasTimer => true;
