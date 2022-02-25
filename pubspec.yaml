@@ -1,5 +1,5 @@
 name: pixel_art_puzzle
-description: A Very Good Project created by Very Good CLI.
+
 version: 1.0.0+1
 publish_to: none
 
@@ -8,6 +8,9 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  image: ^3.1.1
+  file_picker: ^4.4.0
+  rxdart: ^0.27.3
   streaming_shared_preferences: ^2.0.0
   glassmorphism: ^3.0.0
   bloc: ^8.0.1

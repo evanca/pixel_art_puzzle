@@ -1,5 +1,8 @@
 {
     "@@locale": "en",
+    "letsPlay": "Let's play!",
+    "uploadPicture": "Upload picture:",
+    "pixelating": "Pixelating...",
     "selectDifficulty": "Select difficulty:",
     "enterPlayerName": "Enter player name:",
     "globalNext": "Next",
