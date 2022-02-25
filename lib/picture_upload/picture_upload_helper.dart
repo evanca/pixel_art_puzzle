@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:rxdart/rxdart.dart';
 
+import '../helpers/custom_tile_creator.dart';
+
 class PictureUploadState {
   bool loading = false;
   Image? inputCropped;
@@ -65,7 +67,7 @@ class PictureUploadHelper {
     _currentState.outputCropped =
         Image.memory(img.encodeJpg(pixelatedImage) as Uint8List);
 
-    // CustomTileCreator.instance.splitInputImage(image: pixelatedImage);
+    CustomTileCreator.instance.splitInputImage(image: pixelatedImage);
   }
 
   void cropSquare(img.Image src) {
