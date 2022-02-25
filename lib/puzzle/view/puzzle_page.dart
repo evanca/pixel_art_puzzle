@@ -10,8 +10,11 @@ import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
+import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
+import 'package:pixel_art_puzzle/widgets/glassmorphic_flex_container.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
+import '../../app/size_helper.dart';
 import '../../preferences/preferences.dart';
 
 /// {@template puzzle_page}
@@ -86,27 +89,52 @@ class _Puzzle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Stack(
-          children: [
-            SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
-                child: Column(
-                  children: const [
-                    PuzzleHeader(),
-                    PuzzleSections(),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        );
-      },
+    final isSmallSize =
+        SizeHelper.getSize(context) == ResponsiveLayoutSize.small;
+
+    return Column(
+      children: [
+        if (isSmallSize)
+          const SizedBox(
+            height: 32,
+          ),
+        const PuzzleGlassmorphicContainer(
+            smallWidth: double.infinity,
+            smallHeight: 150,
+            largeWidth: double.infinity,
+            largeHeight: 72,
+            child: PuzzleHeader()),
+        const PuzzleGlassmorphicFlexContainer(
+            child: SingleChildScrollView(child: PuzzleSections())),
+      ],
     );
+
+    // return LayoutBuilder(
+    //   builder: (context, constraints) {
+    //     return Stack(
+    //       children: [
+    //         SingleChildScrollView(
+    //           child: ConstrainedBox(
+    //             constraints: BoxConstraints(
+    //               minHeight: constraints.maxHeight,
+    //             ),
+    //             child: Column(
+    //               children: [
+    //                 PuzzleHeader(),
+    //                 PuzzleGlassmorphicContainer(
+    //                     smallHeight: constraints.maxHeight,
+    //                     smallWidth: double.infinity,
+    //                     largeWidth: double.infinity,
+    //                     largeHeight: constraints.maxHeight,
+    //                     child: PuzzleSections()),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     );
+    //   },
+    // );
   }
 }
 
