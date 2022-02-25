@@ -4,12 +4,12 @@ import 'package:pixel_art_puzzle/app/size_helper.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
-import '../colors/colors.dart';
-import '../layout/responsive_layout_builder.dart';
-import '../preferences/preferences.dart';
-import '../select_difficulty_page.dart';
-import '../theme/widgets/puzzle_button.dart';
-import '../widgets/glassmorphic_container.dart';
+import 'colors/colors.dart';
+import 'layout/responsive_layout_builder.dart';
+import 'preferences/preferences.dart';
+import 'select_difficulty_page.dart';
+import 'theme/widgets/puzzle_button.dart';
+import 'widgets/glassmorphic_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                 },
                 child: Text(context.l10n.globalNext.toUpperCase()),
               ),
-              SizedBox(height: isSmallSize ? 16.0 : 32.0),
+              const SizedBox(height: 32.0),
             ]),
           ),
         ),

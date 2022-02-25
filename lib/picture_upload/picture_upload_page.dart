@@ -112,7 +112,7 @@ class PictureUploadPage extends StatelessWidget {
                           },
                           child: Text(context.l10n.letsPlay.toUpperCase()),
                         ),
-                      SizedBox(height: isSmallSize ? 16.0 : 32.0),
+                      const SizedBox(height: 32.0),
                     ]);
               },
             ),
