@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
-import 'package:very_good_slide_puzzle/models/models.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/models/models.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 
 /// {@template dashatar_puzzle_layout_delegate}
 /// A delegate for computing the layout of the puzzle UI

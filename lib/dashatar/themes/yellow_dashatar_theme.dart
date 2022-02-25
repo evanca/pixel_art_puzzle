@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:very_good_slide_puzzle/colors/colors.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/l10n/l10n.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/l10n/l10n.dart';
 
 /// {@template yellow_dashatar_theme}
 /// The yellow dashatar puzzle theme.

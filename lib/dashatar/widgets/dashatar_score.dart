@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_slide_puzzle/colors/colors.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/l10n/l10n.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
-import 'package:very_good_slide_puzzle/theme/themes/themes.dart';
-import 'package:very_good_slide_puzzle/theme/widgets/widgets.dart';
-import 'package:very_good_slide_puzzle/typography/typography.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/l10n/l10n.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/theme/themes/themes.dart';
+import 'package:pixel_art_puzzle/theme/widgets/widgets.dart';
+import 'package:pixel_art_puzzle/typography/typography.dart';
 
 /// {@template dashatar_score}
 /// Displays the score of the solved Dashatar puzzle.

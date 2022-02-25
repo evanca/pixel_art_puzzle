@@ -9,8 +9,8 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_slide_puzzle/app/app.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/app/app.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 
 import '../../helpers/helpers.dart';
 

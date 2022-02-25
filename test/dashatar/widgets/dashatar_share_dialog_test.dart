@@ -4,10 +4,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
-import 'package:very_good_slide_puzzle/timer/timer.dart';
+import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/timer/timer.dart';
 
 import '../../helpers/helpers.dart';
 

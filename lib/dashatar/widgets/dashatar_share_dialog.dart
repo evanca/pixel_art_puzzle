@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
-import 'package:very_good_slide_puzzle/colors/colors.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/helpers/helpers.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/helpers/helpers.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
 
 /// {@template dashatar_share_dialog}
 /// Displays a Dashatar share dialog with a score of the completed puzzle

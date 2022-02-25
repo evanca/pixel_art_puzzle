@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:very_good_slide_puzzle/colors/colors.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
 
 /// {@template app_dialog}
 /// Displays a full screen dialog on a small display and

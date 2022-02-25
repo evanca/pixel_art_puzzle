@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/l10n/l10n.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
-import 'package:very_good_slide_puzzle/theme/theme.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/l10n/l10n.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/theme/theme.dart';
 
 /// {@template dashatar_start_section}
 /// Displays the start section of the puzzle based on [state].

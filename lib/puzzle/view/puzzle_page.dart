@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
-import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
-import 'package:very_good_slide_puzzle/l10n/l10n.dart';
-import 'package:very_good_slide_puzzle/layout/layout.dart';
-import 'package:very_good_slide_puzzle/models/models.dart';
-import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
-import 'package:very_good_slide_puzzle/simple/simple.dart';
-import 'package:very_good_slide_puzzle/theme/theme.dart';
-import 'package:very_good_slide_puzzle/timer/timer.dart';
-import 'package:very_good_slide_puzzle/typography/typography.dart';
+import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
+import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:pixel_art_puzzle/l10n/l10n.dart';
+import 'package:pixel_art_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/models/models.dart';
+import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
+import 'package:pixel_art_puzzle/simple/simple.dart';
+import 'package:pixel_art_puzzle/theme/theme.dart';
+import 'package:pixel_art_puzzle/timer/timer.dart';
+import 'package:pixel_art_puzzle/typography/typography.dart';
 
 /// {@template puzzle_page}
 /// The root page of the puzzle UI.
