@@ -105,8 +105,13 @@ class _Puzzle extends StatelessWidget {
             largeWidth: double.infinity,
             largeHeight: 72,
             child: PuzzleHeader()),
-        const PuzzleGlassmorphicFlexContainer(
-            child: SingleChildScrollView(child: PuzzleSections())),
+        PuzzleGlassmorphicFlexContainer(
+            child: Center(
+          child: ListView(
+            shrinkWrap: true,
+            children: const [PuzzleSections()],
+          ),
+        )),
       ],
     );
   }
@@ -253,7 +258,7 @@ class PuzzleSections extends StatelessWidget {
         ],
       ),
       medium: (context, child) => Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: theme.layoutDelegate.startSectionBuilder(state),

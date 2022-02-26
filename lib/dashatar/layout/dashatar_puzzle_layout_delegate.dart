@@ -52,38 +52,14 @@ class DashatarPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
                       ? state.numberOfTilesLeft
                       : state.puzzle.tiles.length - 1,
                 ),
+                const DashatarCountdown(),
               ],
             ),
           )
         : Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const ResponsiveGap(
-                small: 23,
-                medium: 32,
-              ),
-              ResponsiveLayoutBuilder(
-                small: (_, child) => const DashatarPuzzleActionButton(),
-                medium: (_, child) => const DashatarPuzzleActionButton(),
-                large: (_, __) => const SizedBox(),
-              ),
-              const ResponsiveGap(
-                small: 32,
-                medium: 54,
-              ),
-              ResponsiveLayoutBuilder(
-                small: (_, child) => const PuzzleThumbnailImage(),
-                medium: (_, child) => const PuzzleThumbnailImage(),
-                large: (_, child) => const SizedBox(),
-              ),
-              const ResponsiveGap(
-                small: 32,
-                medium: 54,
-              ),
-              const ResponsiveGap(
-                large: 130,
-              ),
-              const DashatarCountdown(),
+            children: const [
+              PuzzleThumbnailImage(),
+              DashatarCountdown(),
             ],
           );
   }

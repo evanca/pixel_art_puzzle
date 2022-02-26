@@ -31,32 +31,18 @@ class DashatarStartSection extends StatelessWidget {
     return isSmallSize
         ? Container()
         : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const ResponsiveGap(
-                small: 20,
-                medium: 83,
-                large: 151,
-              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 32),
-                    child: NumberOfMovesAndTilesLeft(
-                      key: numberOfMovesAndTilesLeftKey,
-                      numberOfMoves: state.numberOfMoves,
-                      numberOfTilesLeft: status == DashatarPuzzleStatus.started
-                          ? state.numberOfTilesLeft
-                          : state.puzzle.tiles.length - 1,
-                    ),
+                  NumberOfMovesAndTilesLeft(
+                    key: numberOfMovesAndTilesLeftKey,
+                    numberOfMoves: state.numberOfMoves,
+                    numberOfTilesLeft: status == DashatarPuzzleStatus.started
+                        ? state.numberOfTilesLeft
+                        : state.puzzle.tiles.length - 1,
                   ),
                 ],
-              ),
-              const ResponsiveGap(
-                small: 8,
-                medium: 18,
-                large: 32,
               ),
             ],
           );
