@@ -93,7 +93,7 @@ class _DashatarPuzzleActionButtonState
                     unawaited(_audioPlayer.replay());
                   },
             textColor: isLoading ? theme.defaultColor : null,
-            child: Text(text),
+            child: Text(text.toString().toUpperCase()),
           ),
         ),
       ),

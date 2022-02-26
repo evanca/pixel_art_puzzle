@@ -37,19 +37,29 @@ class PuzzleButton extends StatelessWidget {
     final buttonTextColor = textColor ?? PuzzleColors.white;
     final buttonBackgroundColor = backgroundColor ?? theme.buttonColor;
 
-    return SizedBox(
+    return Container(
       width: 145,
       height: 44,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            PuzzleColors.pixelPrimary,
+            PuzzleColors.pixelPrimary.withOpacity(0.7)
+          ],
+          stops: const [0.0, 1.0],
+        ),
+        borderRadius: BorderRadius.circular(22),
+      ),
       child: AnimatedTextButton(
         duration: PuzzleThemeAnimationDuration.duration,
         style: TextButton.styleFrom(
           padding: EdgeInsets.zero,
           textStyle: PuzzleTextStyle.headline5,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(22),
           ),
         ).copyWith(
-          backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
           foregroundColor: MaterialStateProperty.all(buttonTextColor),
         ),
         onPressed: onPressed,

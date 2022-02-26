@@ -63,7 +63,7 @@ class PuzzleTextStyle {
     return _baseTextStyle.copyWith(
       fontSize: 16,
       height: 1.25,
-      fontWeight: PuzzleFontWeight.bold,
+      fontWeight: PuzzleFontWeight.regular,
     );
   }
 
