@@ -103,7 +103,7 @@ class DashatarScore extends StatelessWidget {
                           style: PuzzleTextStyle.headline5.copyWith(
                             color: theme.defaultColor,
                           ),
-                          duration: PuzzleThemeAnimationDuration.textStyle,
+                          duration: PuzzleThemeAnimationDuration.duration,
                           child: Text(l10n.dashatarSuccessCompleted),
                         ),
                       ),
@@ -117,7 +117,7 @@ class DashatarScore extends StatelessWidget {
                         style: wellDoneTextStyle.copyWith(
                           color: PuzzleColors.white,
                         ),
-                        duration: PuzzleThemeAnimationDuration.textStyle,
+                        duration: PuzzleThemeAnimationDuration.duration,
                         child: Text(l10n.dashatarSuccessWellDone),
                       ),
                       const ResponsiveGap(
@@ -130,7 +130,7 @@ class DashatarScore extends StatelessWidget {
                         style: PuzzleTextStyle.headline5.copyWith(
                           color: theme.defaultColor,
                         ),
-                        duration: PuzzleThemeAnimationDuration.textStyle,
+                        duration: PuzzleThemeAnimationDuration.duration,
                         child: Text(l10n.dashatarSuccessScore),
                       ),
                       const ResponsiveGap(
@@ -154,7 +154,7 @@ class DashatarScore extends StatelessWidget {
                         style: numberOfMovesTextStyle.copyWith(
                           color: PuzzleColors.white,
                         ),
-                        duration: PuzzleThemeAnimationDuration.textStyle,
+                        duration: PuzzleThemeAnimationDuration.duration,
                         child: Text(
                           l10n.dashatarSuccessNumberOfMoves(
                             state.numberOfMoves.toString(),

@@ -41,7 +41,7 @@ class PuzzleButton extends StatelessWidget {
       width: 145,
       height: 44,
       child: AnimatedTextButton(
-        duration: PuzzleThemeAnimationDuration.textStyle,
+        duration: PuzzleThemeAnimationDuration.duration,
         style: TextButton.styleFrom(
           padding: EdgeInsets.zero,
           textStyle: PuzzleTextStyle.headline5,

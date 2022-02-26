@@ -64,14 +64,14 @@ class NumberOfMovesAndTilesLeft extends StatelessWidget {
                   style: PuzzleTextStyle.headline4.copyWith(
                     color: textColor,
                   ),
-                  duration: PuzzleThemeAnimationDuration.textStyle,
+                  duration: PuzzleThemeAnimationDuration.duration,
                   child: Text(numberOfMoves.toString()),
                 ),
                 AnimatedDefaultTextStyle(
                   style: bodyTextStyle.copyWith(
                     color: textColor,
                   ),
-                  duration: PuzzleThemeAnimationDuration.textStyle,
+                  duration: PuzzleThemeAnimationDuration.duration,
                   child: Text(' ${l10n.puzzleNumberOfMoves} | '),
                 ),
                 AnimatedDefaultTextStyle(
@@ -79,14 +79,14 @@ class NumberOfMovesAndTilesLeft extends StatelessWidget {
                   style: PuzzleTextStyle.headline4.copyWith(
                     color: textColor,
                   ),
-                  duration: PuzzleThemeAnimationDuration.textStyle,
+                  duration: PuzzleThemeAnimationDuration.duration,
                   child: Text(numberOfTilesLeft.toString()),
                 ),
                 AnimatedDefaultTextStyle(
                   style: bodyTextStyle.copyWith(
                     color: textColor,
                   ),
-                  duration: PuzzleThemeAnimationDuration.textStyle,
+                  duration: PuzzleThemeAnimationDuration.duration,
                   child: Text(' ${l10n.puzzleNumberOfTilesLeft}'),
                 ),
               ],

@@ -30,7 +30,7 @@ class PuzzleName extends StatelessWidget {
         style: PuzzleTextStyle.headline5.copyWith(
           color: nameColor,
         ),
-        duration: PuzzleThemeAnimationDuration.textStyle,
+        duration: PuzzleThemeAnimationDuration.duration,
         child: Text(
           theme.name,
           key: const Key('puzzle_name_theme'),

@@ -2,7 +2,7 @@
 abstract class PuzzleThemeAnimationDuration {
   /// The duration of a text style animation.
   /// The animation may happen when a theme is changed.
-  static const textStyle = Duration(milliseconds: 530);
+  static const duration = Duration(milliseconds: 530);
 
   /// The duration of a background color change animation.
   /// The animation may happen when a theme is changed.

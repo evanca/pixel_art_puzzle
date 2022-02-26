@@ -54,7 +54,7 @@ class PuzzleTitle extends StatelessWidget {
 
         return AnimatedDefaultTextStyle(
           style: textStyle,
-          duration: PuzzleThemeAnimationDuration.textStyle,
+          duration: PuzzleThemeAnimationDuration.duration,
           child: Text(
             title,
             textAlign: textAlign,

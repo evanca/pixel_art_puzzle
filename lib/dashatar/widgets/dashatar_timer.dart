@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
@@ -49,34 +50,32 @@ class DashatarTimer extends StatelessWidget {
                 ? PuzzleTextStyle.headline4
                 : PuzzleTextStyle.headline3);
 
-        final currentIconSize = iconSize ??
-            (currentSize == ResponsiveLayoutSize.small
-                ? const Size(28, 28)
-                : const Size(32, 32));
-
         final timeElapsed = Duration(seconds: secondsElapsed);
 
         return Row(
           key: const Key('dashatar_timer'),
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            Image.asset(
+              'assets/images/stopwatch_12px.png',
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.none,
+              width: 48,
+              height: 48,
+            ),
+            Gap(iconPadding ?? 8),
             AnimatedDefaultTextStyle(
               style: currentTextStyle.copyWith(
-                color: PuzzleColors.white,
+                color: PuzzleColors.pixel50,
               ),
-              duration: PuzzleThemeAnimationDuration.textStyle,
+              duration: PuzzleThemeAnimationDuration.duration,
               child: Text(
                 _formatDuration(timeElapsed),
                 key: ValueKey(secondsElapsed),
                 semanticsLabel: _getDurationLabel(timeElapsed, context),
+                style: GoogleFonts.pressStart2p(fontSize: 22),
               ),
-            ),
-            Gap(iconPadding ?? 8),
-            Image.asset(
-              'assets/images/timer_icon.png',
-              key: const Key('dashatar_timer_icon'),
-              width: currentIconSize.width,
-              height: currentIconSize.height,
             ),
           ],
         );
