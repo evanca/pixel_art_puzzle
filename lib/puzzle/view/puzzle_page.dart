@@ -303,16 +303,22 @@ class PuzzleBoard extends StatelessWidget {
             context.read<TimerBloc>().add(const TimerStopped());
           }
         },
-        child: theme.layoutDelegate.boardBuilder(
-          size,
-          puzzle.tiles
-              .map(
-                (tile) => _PuzzleTile(
-                  key: Key('puzzle_tile_${tile.value.toString()}'),
-                  tile: tile,
-                ),
-              )
-              .toList(),
+        child: Column(
+          children: [
+            theme.layoutDelegate.boardBuilder(
+              size,
+              puzzle.tiles
+                  .map(
+                    (tile) => _PuzzleTile(
+                      key: Key('puzzle_tile_${tile.value.toString()}'),
+                      tile: tile,
+                    ),
+                  )
+                  .toList(),
+            ),
+            const Gap(32),
+            const DashatarPuzzleActionButton()
+          ],
         ),
       ),
     );
