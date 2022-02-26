@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
 import 'package:pixel_art_puzzle/models/models.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
+
+import '../../app/size_helper.dart';
+import '../../theme/widgets/number_of_moves_and_tiles_left.dart';
 
 /// {@template dashatar_puzzle_layout_delegate}
 /// A delegate for computing the layout of the puzzle UI
@@ -26,38 +30,62 @@ class DashatarPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
   }
 
   @override
-  Widget endSectionBuilder(PuzzleState state) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        const ResponsiveGap(
-          small: 23,
-          medium: 32,
-        ),
-        ResponsiveLayoutBuilder(
-          small: (_, child) => const DashatarPuzzleActionButton(),
-          medium: (_, child) => const DashatarPuzzleActionButton(),
-          large: (_, __) => const SizedBox(),
-        ),
-        const ResponsiveGap(
-          small: 32,
-          medium: 54,
-        ),
-        ResponsiveLayoutBuilder(
-          small: (_, child) => const PuzzleThumbnailImage(),
-          medium: (_, child) => const PuzzleThumbnailImage(),
-          large: (_, child) => const SizedBox(),
-        ),
-        const ResponsiveGap(
-          small: 32,
-          medium: 54,
-        ),
-        const ResponsiveGap(
-          large: 130,
-        ),
-        const DashatarCountdown(),
-      ],
-    );
+  Widget endSectionBuilder(PuzzleState state, BuildContext context) {
+    final status =
+        context.select((DashatarPuzzleBloc bloc) => bloc.state.status);
+
+    final isSmallSize =
+        SizeHelper.getSize(context) == ResponsiveLayoutSize.small;
+
+    return isSmallSize
+        ? Padding(
+            padding: const EdgeInsets.all(32),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const PuzzleThumbnailImage(),
+                const Spacer(),
+                NumberOfMovesAndTilesLeft(
+                  key: numberOfMovesAndTilesLeftKey,
+                  numberOfMoves: state.numberOfMoves,
+                  numberOfTilesLeft: status == DashatarPuzzleStatus.started
+                      ? state.numberOfTilesLeft
+                      : state.puzzle.tiles.length - 1,
+                ),
+              ],
+            ),
+          )
+        : Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const ResponsiveGap(
+                small: 23,
+                medium: 32,
+              ),
+              ResponsiveLayoutBuilder(
+                small: (_, child) => const DashatarPuzzleActionButton(),
+                medium: (_, child) => const DashatarPuzzleActionButton(),
+                large: (_, __) => const SizedBox(),
+              ),
+              const ResponsiveGap(
+                small: 32,
+                medium: 54,
+              ),
+              ResponsiveLayoutBuilder(
+                small: (_, child) => const PuzzleThumbnailImage(),
+                medium: (_, child) => const PuzzleThumbnailImage(),
+                large: (_, child) => const SizedBox(),
+              ),
+              const ResponsiveGap(
+                small: 32,
+                medium: 54,
+              ),
+              const ResponsiveGap(
+                large: 130,
+              ),
+              const DashatarCountdown(),
+            ],
+          );
   }
 
   @override

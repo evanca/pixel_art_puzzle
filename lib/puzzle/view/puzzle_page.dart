@@ -249,7 +249,7 @@ class PuzzleSections extends StatelessWidget {
         children: [
           theme.layoutDelegate.startSectionBuilder(state),
           const PuzzleBoard(),
-          theme.layoutDelegate.endSectionBuilder(state),
+          theme.layoutDelegate.endSectionBuilder(state, context),
         ],
       ),
       medium: (context, child) => Row(
@@ -260,7 +260,7 @@ class PuzzleSections extends StatelessWidget {
           ),
           const PuzzleBoard(),
           Expanded(
-            child: theme.layoutDelegate.endSectionBuilder(state),
+            child: theme.layoutDelegate.endSectionBuilder(state, context),
           ),
         ],
       ),
@@ -272,7 +272,7 @@ class PuzzleSections extends StatelessWidget {
           ),
           const PuzzleBoard(),
           Expanded(
-            child: theme.layoutDelegate.endSectionBuilder(state),
+            child: theme.layoutDelegate.endSectionBuilder(state, context),
           ),
         ],
       ),

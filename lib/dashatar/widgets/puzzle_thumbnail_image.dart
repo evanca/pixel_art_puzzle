@@ -14,7 +14,7 @@ class PuzzleThumbnailImage extends StatefulWidget {
         super(key: key);
 
   static const _activeThemeNormalSize = 120.0;
-  static const _activeThemeSmallSize = 65.0;
+  static const _activeThemeSmallSize = 85.0;
 
   final AudioPlayerFactory _audioPlayerFactory;
 

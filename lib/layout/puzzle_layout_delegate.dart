@@ -28,7 +28,7 @@ abstract class PuzzleLayoutDelegate extends Equatable {
   /// on a desktop.
   /// - the bottom side of the puzzle UI (below the puzzle board)
   /// on a tablet/mobile.
-  Widget endSectionBuilder(PuzzleState state);
+  Widget endSectionBuilder(PuzzleState state, BuildContext context);
 
   /// A widget builder for the background of the puzzle based on
   /// the puzzle [state].
