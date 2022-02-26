@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pixel_art_puzzle/l10n/l10n.dart';
-import 'package:pixel_art_puzzle/layout/layout.dart';
-import 'package:pixel_art_puzzle/theme/theme.dart';
-import 'package:pixel_art_puzzle/typography/typography.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '/l10n/l10n.dart';
+import '/layout/layout.dart';
+import '/theme/theme.dart';
+import '../../colors/colors.dart';
 
 /// {@template number_of_moves_and_tiles_left}
 /// Displays how many moves have been made on the current puzzle
@@ -30,22 +31,18 @@ class NumberOfMovesAndTilesLeft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final l10n = context.l10n;
-    final textColor = color ?? theme.defaultColor;
 
     return ResponsiveLayoutBuilder(
       small: (context, child) => Center(child: child),
       medium: (context, child) => Center(child: child),
       large: (context, child) => child!,
       child: (currentSize) {
-        final mainAxisAlignment = currentSize == ResponsiveLayoutSize.large
-            ? MainAxisAlignment.start
-            : MainAxisAlignment.center;
-
         final bodyTextStyle = currentSize == ResponsiveLayoutSize.small
-            ? PuzzleTextStyle.bodySmall
-            : PuzzleTextStyle.body;
+            ? GoogleFonts.pressStart2p(
+                fontSize: 18, color: PuzzleColors.pixel50)
+            : GoogleFonts.pressStart2p(
+                fontSize: 20, color: PuzzleColors.pixel50);
 
         return Semantics(
           label: l10n.puzzleNumberOfMovesAndTilesLeftLabelText(
@@ -53,41 +50,43 @@ class NumberOfMovesAndTilesLeft extends StatelessWidget {
             numberOfTilesLeft.toString(),
           ),
           child: ExcludeSemantics(
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               key: const Key('number_of_moves_and_tiles_left'),
-              mainAxisAlignment: mainAxisAlignment,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
               children: [
-                AnimatedDefaultTextStyle(
-                  key: const Key('number_of_moves_and_tiles_left_moves'),
-                  style: PuzzleTextStyle.headline4.copyWith(
-                    color: textColor,
-                  ),
-                  duration: PuzzleThemeAnimationDuration.duration,
-                  child: Text(numberOfMoves.toString()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AnimatedDefaultTextStyle(
+                      style: bodyTextStyle,
+                      key: const Key('number_of_moves_and_tiles_left_moves'),
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(numberOfMoves.toString().toUpperCase()),
+                    ),
+                    AnimatedDefaultTextStyle(
+                      style: bodyTextStyle,
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(' ${l10n.puzzleNumberOfMoves.toUpperCase()}'),
+                    ),
+                  ],
                 ),
-                AnimatedDefaultTextStyle(
-                  style: bodyTextStyle.copyWith(
-                    color: textColor,
-                  ),
-                  duration: PuzzleThemeAnimationDuration.duration,
-                  child: Text(' ${l10n.puzzleNumberOfMoves} | '),
-                ),
-                AnimatedDefaultTextStyle(
-                  key: const Key('number_of_moves_and_tiles_left_tiles_left'),
-                  style: PuzzleTextStyle.headline4.copyWith(
-                    color: textColor,
-                  ),
-                  duration: PuzzleThemeAnimationDuration.duration,
-                  child: Text(numberOfTilesLeft.toString()),
-                ),
-                AnimatedDefaultTextStyle(
-                  style: bodyTextStyle.copyWith(
-                    color: textColor,
-                  ),
-                  duration: PuzzleThemeAnimationDuration.duration,
-                  child: Text(' ${l10n.puzzleNumberOfTilesLeft}'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AnimatedDefaultTextStyle(
+                      style: bodyTextStyle,
+                      key: const Key(
+                          'number_of_moves_and_tiles_left_tiles_left'),
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(numberOfTilesLeft.toString().toUpperCase()),
+                    ),
+                    AnimatedDefaultTextStyle(
+                      style: bodyTextStyle,
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(
+                          ' ${l10n.puzzleNumberOfTilesLeft.toUpperCase()}'),
+                    ),
+                  ],
                 ),
               ],
             ),

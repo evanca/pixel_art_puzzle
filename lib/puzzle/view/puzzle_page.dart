@@ -109,33 +109,6 @@ class _Puzzle extends StatelessWidget {
             child: SingleChildScrollView(child: PuzzleSections())),
       ],
     );
-
-    // return LayoutBuilder(
-    //   builder: (context, constraints) {
-    //     return Stack(
-    //       children: [
-    //         SingleChildScrollView(
-    //           child: ConstrainedBox(
-    //             constraints: BoxConstraints(
-    //               minHeight: constraints.maxHeight,
-    //             ),
-    //             child: Column(
-    //               children: [
-    //                 PuzzleHeader(),
-    //                 PuzzleGlassmorphicContainer(
-    //                     smallHeight: constraints.maxHeight,
-    //                     smallWidth: double.infinity,
-    //                     largeWidth: double.infinity,
-    //                     largeHeight: constraints.maxHeight,
-    //                     child: PuzzleSections()),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //       ],
-    //     );
-    //   },
-    // );
   }
 }
 
@@ -275,16 +248,20 @@ class PuzzleSections extends StatelessWidget {
       small: (context, child) => Column(
         children: [
           theme.layoutDelegate.startSectionBuilder(state),
-          const PuzzleMenu(),
           const PuzzleBoard(),
           theme.layoutDelegate.endSectionBuilder(state),
         ],
       ),
-      medium: (context, child) => Column(
+      medium: (context, child) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          theme.layoutDelegate.startSectionBuilder(state),
+          Expanded(
+            child: theme.layoutDelegate.startSectionBuilder(state),
+          ),
           const PuzzleBoard(),
-          theme.layoutDelegate.endSectionBuilder(state),
+          Expanded(
+            child: theme.layoutDelegate.endSectionBuilder(state),
+          ),
         ],
       ),
       large: (context, child) => Row(
