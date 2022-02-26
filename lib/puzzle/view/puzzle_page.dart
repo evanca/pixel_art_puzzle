@@ -190,27 +190,67 @@ class PuzzleHeader extends StatelessWidget {
           ],
         ),
       ),
-      medium: (context, child) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 50,
-        ),
+      medium: (context, child) => Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            PuzzleLogo(),
-            PuzzleMenu(),
+          children: [
+            Gap(padding),
+            Image.asset(
+              'assets/images/user_12px.png',
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.none,
+              width: 42,
+              height: 42,
+            ),
+            Gap(padding),
+            Text(
+              Prefs().username.getValue(),
+              style: GoogleFonts.pressStart2p(fontSize: 20),
+            ),
+            Spacer(),
+            DashatarTimer(),
+            Spacer(),
+            Image.asset(
+              'assets/images/trophy_12px.png',
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.none,
+              width: 48,
+              height: 48,
+            ),
+            Gap(padding),
+            AudioControl(key: audioControlKey),
+            Gap(padding),
           ],
         ),
       ),
-      large: (context, child) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 50,
-        ),
+      large: (context, child) => Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            PuzzleLogo(),
-            PuzzleMenu(),
+          children: [
+            Gap(padding),
+            Image.asset(
+              'assets/images/user_12px.png',
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.none,
+              width: 42,
+              height: 42,
+            ),
+            Gap(padding),
+            Text(
+              Prefs().username.getValue(),
+              style: GoogleFonts.pressStart2p(fontSize: 20),
+            ),
+            Spacer(),
+            DashatarTimer(),
+            Spacer(),
+            Image.asset(
+              'assets/images/trophy_12px.png',
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.none,
+              width: 48,
+              height: 48,
+            ),
+            Gap(padding),
+            AudioControl(key: audioControlKey),
+            Gap(padding),
           ],
         ),
       ),
