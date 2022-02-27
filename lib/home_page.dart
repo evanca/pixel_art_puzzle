@@ -29,10 +29,6 @@ class HomePage extends StatelessWidget {
                 filterQuality: FilterQuality.none),
           ),
           child: PuzzleGlassmorphicContainer(
-            smallWidth: 300,
-            smallHeight: 500,
-            largeWidth: 750,
-            largeHeight: 500,
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               const SizedBox(height: 32),

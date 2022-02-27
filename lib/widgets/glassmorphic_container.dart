@@ -6,10 +6,10 @@ import '../layout/responsive_layout_builder.dart';
 class PuzzleGlassmorphicContainer extends StatelessWidget {
   const PuzzleGlassmorphicContainer(
       {Key? key,
-      required this.smallWidth,
-      required this.smallHeight,
-      required this.largeWidth,
-      required this.largeHeight,
+      this.smallWidth = 300,
+      this.smallHeight = 500,
+      this.largeWidth = 750,
+      this.largeHeight = 600,
       required this.child})
       : super(key: key);
 
