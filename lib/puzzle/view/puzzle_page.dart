@@ -194,17 +194,22 @@ class PuzzleHeader extends StatelessWidget {
         child: Row(
           children: [
             Gap(padding),
-            Image.asset(
-              'assets/images/user_12px.png',
-              fit: BoxFit.contain,
-              filterQuality: FilterQuality.none,
-              width: 42,
-              height: 42,
-            ),
-            Gap(padding),
-            Text(
-              Prefs().username.getValue(),
-              style: GoogleFonts.pressStart2p(fontSize: 20),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Image.asset(
+                  'assets/images/user_12px.png',
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.none,
+                  width: 42,
+                  height: 42,
+                ),
+                Gap(padding),
+                Text(
+                  Prefs().username.getValue(),
+                  style: GoogleFonts.pressStart2p(fontSize: 20),
+                ),
+              ],
             ),
             Spacer(),
             DashatarTimer(),
