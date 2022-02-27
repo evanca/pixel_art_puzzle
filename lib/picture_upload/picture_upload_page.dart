@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
@@ -56,6 +57,7 @@ class PictureUploadPage extends StatelessWidget {
                           filterQuality: FilterQuality.none,
                         ),
                       ),
+                      const Gap(32),
                       if (snapshot.data?.outputCropped != null && !isSmallSize)
                         Flexible(
                           child: Row(
