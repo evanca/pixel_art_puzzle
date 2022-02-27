@@ -308,7 +308,7 @@ class PuzzleSections extends StatelessWidget {
           Expanded(
             child: theme.layoutDelegate.startSectionBuilder(state),
           ),
-          const PuzzleBoard(),
+          const Expanded(flex: 2, child: PuzzleBoard()),
           Expanded(
             child: theme.layoutDelegate.endSectionBuilder(state, context),
           ),

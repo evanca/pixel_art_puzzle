@@ -35,12 +35,15 @@ class DashatarStartSection extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  NumberOfMovesAndTilesLeft(
-                    key: numberOfMovesAndTilesLeftKey,
-                    numberOfMoves: state.numberOfMoves,
-                    numberOfTilesLeft: status == DashatarPuzzleStatus.started
-                        ? state.numberOfTilesLeft
-                        : state.puzzle.tiles.length - 1,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: NumberOfMovesAndTilesLeft(
+                      key: numberOfMovesAndTilesLeftKey,
+                      numberOfMoves: state.numberOfMoves,
+                      numberOfTilesLeft: status == DashatarPuzzleStatus.started
+                          ? state.numberOfTilesLeft
+                          : state.puzzle.tiles.length - 1,
+                    ),
                   ),
                 ],
               ),

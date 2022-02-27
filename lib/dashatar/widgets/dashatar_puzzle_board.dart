@@ -94,11 +94,14 @@ class _DashatarPuzzleBoardState extends State<DashatarPuzzleBoard> {
 
           final currentDifficulty = Prefs().difficultyLevel.getValue();
 
-          return GridView.count(
-            mainAxisSpacing: spacing[currentDifficulty]!,
-            crossAxisSpacing: spacing[currentDifficulty]!,
-            crossAxisCount: Prefs().puzzleSize.getValue(),
-            children: widget.tiles,
+          return Center(
+            child: GridView.count(
+              shrinkWrap: true,
+              mainAxisSpacing: spacing[currentDifficulty]!,
+              crossAxisSpacing: spacing[currentDifficulty]!,
+              crossAxisCount: Prefs().puzzleSize.getValue(),
+              children: widget.tiles,
+            ),
           );
         },
       ),
