@@ -55,7 +55,7 @@
     "@dashatarSuccessCompleted": {
         "description": "Shown as a title in the Dashatar success state"
     },
-    "dashatarSuccessWellDone": "Well done.\nCongrats!",
+    "dashatarSuccessWellDone": "Well done. Congrats!",
     "@dashatarSuccessWellDone": {
         "description": "Shown as a subtitle in the Dashatar success state"
     },
@@ -139,7 +139,7 @@
     "@dashatarSuccessShareYourScoreTitle": {
         "description": "Shown as a share title in the Dashatar success state"
     },
-    "dashatarSuccessShareYourScoreMessage": "Share this puzzle to challenge your friends and be sure to check out the Flutter Puzzle Hack.",
+    "dashatarSuccessShareYourScoreMessage": "Share this puzzle to challenge your friends:",
     "@dashatarSuccessShareYourScoreMessage": {
         "description": "Shown as a share message in the Dashatar success state"
     },

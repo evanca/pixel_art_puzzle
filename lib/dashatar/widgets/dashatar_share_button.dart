@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
@@ -125,10 +126,10 @@ class _DashatarShareButtonState extends State<DashatarShareButton> {
     return AudioControlListener(
       audioPlayer: _audioPlayer,
       child: Container(
-        height: 56,
+        height: 44,
+        width: 150,
         decoration: BoxDecoration(
-          border: Border.all(color: widget.color),
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(22),
         ),
         child: TextButton(
           style: TextButton.styleFrom(
@@ -137,7 +138,7 @@ class _DashatarShareButtonState extends State<DashatarShareButton> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: PuzzleColors.pixel90,
           ),
           onPressed: () async {
             widget.onPressed();
