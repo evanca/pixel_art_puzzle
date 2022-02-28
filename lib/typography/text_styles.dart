@@ -139,4 +139,6 @@ class PuzzleTextStyle {
     color: PuzzleColors.pixel50,
     fontWeight: PuzzleFontWeight.regular,
   );
+
+  static final timerTextStyle = GoogleFonts.pressStart2p(fontSize: 22);
 }

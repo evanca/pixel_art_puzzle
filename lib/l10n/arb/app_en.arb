@@ -1,5 +1,6 @@
 {
     "@@locale": "en",
+    "leaderboard": "Leaderboard",
     "letsPlay": "Let's play!",
     "uploadPicture": "Upload picture:",
     "pixelating": "Pixelating...",
@@ -50,7 +51,7 @@
     "@dashatarCountdownGo": {
         "description": "Shown when the countdown has just finished and the puzzle is about to start"
     },
-    "dashatarSuccessCompleted": "Puzzle challenge completed",
+    "dashatarSuccessCompleted": "Puzzle challenge completed.",
     "@dashatarSuccessCompleted": {
         "description": "Shown as a title in the Dashatar success state"
     },
@@ -62,7 +63,7 @@
     "@dashatarSuccessScore": {
         "description": "Shown as a score title in the Dashatar success state"
     },
-    "dashatarSuccessNumberOfMoves": "{numberOfMoves} Moves",
+    "dashatarSuccessNumberOfMoves": "{numberOfMoves} MOVES",
     "@dashatarSuccessNumberOfMoves": {
         "description": "Shown as a number of moves in the Dashatar success state",
         "placeholders": {

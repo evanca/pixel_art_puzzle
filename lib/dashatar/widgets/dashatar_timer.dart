@@ -64,7 +64,7 @@ class DashatarTimer extends StatelessWidget {
               width: 48,
               height: 48,
             ),
-            Gap(iconPadding ?? 8),
+            const Gap(16),
             AnimatedDefaultTextStyle(
               style: currentTextStyle.copyWith(
                 color: PuzzleColors.pixel50,

@@ -143,6 +143,7 @@ class PuzzleHeader extends StatelessWidget {
               height: padding,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Image.asset(
                   'assets/images/user_12px.png',
@@ -151,9 +152,7 @@ class PuzzleHeader extends StatelessWidget {
                   width: 48,
                   height: 48,
                 ),
-                SizedBox(
-                  width: padding,
-                ),
+                const Gap(16),
                 Expanded(
                   child: Text(
                     Prefs().username.getValue(),
@@ -211,9 +210,9 @@ class PuzzleHeader extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
-            DashatarTimer(),
-            Spacer(),
+            const Spacer(),
+            const DashatarTimer(),
+            const Spacer(),
             Image.asset(
               'assets/images/trophy_12px.png',
               fit: BoxFit.contain,
@@ -243,9 +242,9 @@ class PuzzleHeader extends StatelessWidget {
               Prefs().username.getValue(),
               style: GoogleFonts.pressStart2p(fontSize: 20),
             ),
-            Spacer(),
-            DashatarTimer(),
-            Spacer(),
+            const Spacer(),
+            const DashatarTimer(),
+            const Spacer(),
             Image.asset(
               'assets/images/trophy_12px.png',
               fit: BoxFit.contain,

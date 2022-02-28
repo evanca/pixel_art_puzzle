@@ -90,69 +90,77 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
                 ? CrossAxisAlignment.start
                 : CrossAxisAlignment.center;
 
-            return Stack(
-              key: const Key('dashatar_share_dialog'),
-              children: [
-                SingleChildScrollView(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return SizedBox(
-                        width: constraints.maxWidth,
-                        child: Padding(
-                          padding: padding,
-                          child: DashatarShareDialogAnimatedBuilder(
-                            animation: _controller,
-                            builder: (context, child, animation) {
-                              return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: crossAxisAlignment,
-                                children: [
-                                  SlideTransition(
-                                    position: animation.scoreOffset,
-                                    child: Opacity(
-                                      opacity: animation.scoreOpacity.value,
-                                      child: const DashatarScore(),
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/pixel_bg.png'),
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.none),
+              ),
+              child: Stack(
+                key: const Key('dashatar_share_dialog'),
+                children: [
+                  SingleChildScrollView(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return SizedBox(
+                          width: constraints.maxWidth,
+                          child: Padding(
+                            padding: padding,
+                            child: DashatarShareDialogAnimatedBuilder(
+                              animation: _controller,
+                              builder: (context, child, animation) {
+                                return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: crossAxisAlignment,
+                                  children: [
+                                    SlideTransition(
+                                      position: animation.scoreOffset,
+                                      child: Opacity(
+                                        opacity: animation.scoreOpacity.value,
+                                        child: const DashatarScore(),
+                                      ),
                                     ),
-                                  ),
-                                  const ResponsiveGap(
-                                    small: 40,
-                                    medium: 40,
-                                    large: 80,
-                                  ),
-                                  DashatarShareYourScore(
-                                    animation: animation,
-                                  ),
-                                ],
-                              );
-                            },
+                                    const ResponsiveGap(
+                                      small: 40,
+                                      medium: 40,
+                                      large: 80,
+                                    ),
+                                    DashatarShareYourScore(
+                                      animation: animation,
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Positioned(
-                  right: closeIconOffset.dx,
-                  top: closeIconOffset.dy,
-                  child: IconButton(
-                    key: const Key('dashatar_share_dialog_close_button'),
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    iconSize: 18,
-                    icon: const Icon(
-                      Icons.close,
-                      color: PuzzleColors.black,
+                        );
+                      },
                     ),
-                    onPressed: () {
-                      unawaited(_clickAudioPlayer.play());
-                      Navigator.of(context).pop();
-                    },
                   ),
-                ),
-              ],
+                  Positioned(
+                    right: closeIconOffset.dx,
+                    top: closeIconOffset.dy,
+                    child: IconButton(
+                      key: const Key('dashatar_share_dialog_close_button'),
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      iconSize: 18,
+                      icon: const Icon(
+                        Icons.close,
+                        color: PuzzleColors.black,
+                      ),
+                      onPressed: () {
+                        unawaited(_clickAudioPlayer.play());
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
