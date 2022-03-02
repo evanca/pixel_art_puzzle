@@ -6,6 +6,7 @@ import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
+import 'package:pixel_art_puzzle/models/highscore.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 
@@ -45,11 +46,26 @@ class _DashatarPuzzleBoardState extends State<DashatarPuzzleBoard> {
 
   @override
   Widget build(BuildContext context) {
+    final secondsElapsed =
+        context.select((TimerBloc bloc) => bloc.state.secondsElapsed);
+
+    final moves = context.select((PuzzleBloc bloc) => bloc.state.numberOfMoves);
+
     return BlocListener<PuzzleBloc, PuzzleState>(
       listener: (context, state) async {
         if (state.puzzleStatus == PuzzleStatus.complete) {
           _completePuzzleTimer =
               Timer(const Duration(milliseconds: 370), () async {
+            Prefs prefs = Prefs();
+
+            HighScore highScore = HighScore(
+                username: prefs.username.getValue(),
+                difficulty: prefs.difficultyLevel.getValue(),
+                moves: moves,
+                secondsElapsed: secondsElapsed);
+
+            highScore.save();
+
             await showAppDialog<void>(
               context: context,
               child: MultiBlocProvider(

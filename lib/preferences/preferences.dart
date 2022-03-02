@@ -14,6 +14,9 @@ class Prefs {
     _prefs ??= await StreamingSharedPreferences.instance;
   }
 
+  late Preference<String> highScores =
+      _prefs!.getString(keyHighScores, defaultValue: '');
+
   late Preference<int> difficultyLevel =
       _prefs!.getInt(keyDifficultyLevel, defaultValue: difficultyLevelMedium);
 

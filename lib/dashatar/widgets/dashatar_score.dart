@@ -11,6 +11,7 @@ import 'package:pixel_art_puzzle/typography/typography.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 
 import '../../colors/colors.dart';
+import '../../timer/bloc/timer_bloc.dart';
 
 /// {@template dashatar_score}
 /// Displays the score of the solved Dashatar puzzle.
@@ -28,6 +29,9 @@ class DashatarScore extends StatelessWidget {
     final theme = context.select((DashatarThemeBloc bloc) => bloc.state.theme);
     final state = context.watch<PuzzleBloc>().state;
     final l10n = context.l10n;
+
+    final secondsElapsed =
+        context.select((TimerBloc bloc) => bloc.state.secondsElapsed);
 
     return ResponsiveLayoutBuilder(
       small: (_, child) => child!,
@@ -88,7 +92,7 @@ class DashatarScore extends StatelessWidget {
                         style: PuzzleTextStyle.headline4,
                         duration: PuzzleThemeAnimationDuration.duration,
                         child: Text(
-                          '${l10n.dashatarSuccessCompleted}',
+                          l10n.dashatarSuccessCompleted,
                           textAlign: TextAlign.right,
                         ),
                       ),
@@ -96,7 +100,7 @@ class DashatarScore extends StatelessWidget {
                         style: PuzzleTextStyle.headline4,
                         duration: PuzzleThemeAnimationDuration.duration,
                         child: Text(
-                          '${l10n.dashatarSuccessWellDone}',
+                          l10n.dashatarSuccessWellDone,
                           textAlign: TextAlign.right,
                         ),
                       ),
