@@ -17,6 +17,9 @@ abstract class PuzzleColors {
   /// White 2 (opacity 40%)
   static const Color white2 = Color(0x66FFFFFF);
 
+  /// Super Pink
+  static const Color superPink = Color(0xFFC46BAE);
+
   /// Pixel primary
   static const Color pixelPrimary = Color(0xFFE0607E);
 

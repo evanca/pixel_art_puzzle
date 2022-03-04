@@ -17,6 +17,7 @@ import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
 import '../../app/size_helper.dart';
 import '../../preferences/preferences.dart';
+import '../../widgets/leaderboard_button.dart';
 
 /// {@template puzzle_page}
 /// The root page of the puzzle UI.
@@ -170,13 +171,7 @@ class PuzzleHeader extends StatelessWidget {
               children: [
                 const DashatarTimer(mainAxisAlignment: MainAxisAlignment.start),
                 const Spacer(),
-                Image.asset(
-                  'assets/images/trophy_12px.png',
-                  fit: BoxFit.contain,
-                  filterQuality: FilterQuality.none,
-                  width: 48,
-                  height: 48,
-                ),
+                const LeaderboardButton(),
                 SizedBox(
                   width: padding,
                 ),
@@ -213,13 +208,7 @@ class PuzzleHeader extends StatelessWidget {
             const Spacer(),
             const DashatarTimer(),
             const Spacer(),
-            Image.asset(
-              'assets/images/trophy_12px.png',
-              fit: BoxFit.contain,
-              filterQuality: FilterQuality.none,
-              width: 48,
-              height: 48,
-            ),
+            const LeaderboardButton(),
             Gap(padding),
             AudioControl(key: audioControlKey),
             Gap(padding),
@@ -245,13 +234,7 @@ class PuzzleHeader extends StatelessWidget {
             const Spacer(),
             const DashatarTimer(),
             const Spacer(),
-            Image.asset(
-              'assets/images/trophy_12px.png',
-              fit: BoxFit.contain,
-              filterQuality: FilterQuality.none,
-              width: 48,
-              height: 48,
-            ),
+            const LeaderboardButton(),
             Gap(padding),
             AudioControl(key: audioControlKey),
             Gap(padding),

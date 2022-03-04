@@ -1,5 +1,9 @@
 {
     "@@locale": "en",
+    "difficulty0": "Easy",
+    "difficulty1": "Medium",
+    "difficulty2": "Hard",
+    "difficulty3": "Insane",
     "leaderboard": "Leaderboard",
     "letsPlay": "Let's play!",
     "uploadPicture": "Upload picture:",

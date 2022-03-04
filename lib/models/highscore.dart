@@ -44,14 +44,25 @@ class HighScore {
   }
 
   save() {
-    String highScore = jsonEncode(toMap());
-    debugPrint(highScore);
+    var initialHighScores = Prefs().highScores.getValue();
+    List currentHighScores = [];
 
-    var currentHighScores = Prefs().highScores.getValue();
-    if (currentHighScores != "") {
-      currentHighScores = jsonDecode(currentHighScores);
+    if (initialHighScores == "") {
+      // Create and save first high score:
+      var highScores = [];
+      highScores.add(toMap());
+      Prefs().highScores.setValue(jsonEncode(highScores));
+    }
+    if (initialHighScores != "") {
+      currentHighScores = jsonDecode(Prefs().highScores.getValue());
+      currentHighScores.add(toMap());
+      currentHighScores.sort((a, b) => (b["score"]).compareTo(a["score"]));
+      // Keep 10 records max:
+      currentHighScores = currentHighScores.take(10).toList();
+      Prefs().highScores.setValue(jsonEncode(currentHighScores));
     }
 
-    debugPrint(currentHighScores);
+    currentHighScores = jsonDecode(Prefs().highScores.getValue());
+    debugPrint(currentHighScores.toString());
   }
 }

@@ -11,7 +11,9 @@ import 'package:pixel_art_puzzle/typography/typography.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 
 import '../../colors/colors.dart';
+import '../../leaderboard_page.dart';
 import '../../timer/bloc/timer_bloc.dart';
+import '../../widgets/leaderboard_button.dart';
 
 /// {@template dashatar_score}
 /// Displays the score of the solved Dashatar puzzle.
@@ -133,24 +135,26 @@ class DashatarScore extends StatelessWidget {
                         ),
                       ),
                       const Gap(32),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Image.asset(
-                            'assets/images/trophy_12px.png',
-                            fit: BoxFit.contain,
-                            filterQuality: FilterQuality.none,
-                            width: 48,
-                            height: 48,
-                          ),
-                          const Gap(8),
-                          Text(
-                            context.l10n.leaderboard,
-                            style: PuzzleTextStyle.timerTextStyle.copyWith(
-                                color: PuzzleColors.pixelPrimary, fontSize: 18),
-                          )
-                        ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const LeaderboardPage()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            const LeaderboardButton(),
+                            const Gap(8),
+                            Text(
+                              context.l10n.leaderboard,
+                              style: PuzzleTextStyle.timerTextStyle.copyWith(
+                                  color: PuzzleColors.pixelPrimary,
+                                  fontSize: 18),
+                            )
+                          ],
+                        ),
                       ),
                       const Gap(16),
                     ],
