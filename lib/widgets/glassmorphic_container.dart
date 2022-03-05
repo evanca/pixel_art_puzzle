@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
 import '../layout/responsive_layout_builder.dart';
@@ -7,9 +8,10 @@ class PuzzleGlassmorphicContainer extends StatelessWidget {
   const PuzzleGlassmorphicContainer(
       {Key? key,
       this.smallWidth = 300,
-      this.smallHeight = 500,
+      this.smallHeight = 600,
       this.largeWidth = 750,
       this.largeHeight = 600,
+      this.hasPadding = true,
       required this.child})
       : super(key: key);
 
@@ -18,6 +20,7 @@ class PuzzleGlassmorphicContainer extends StatelessWidget {
   final double largeWidth;
   final double largeHeight;
   final Widget child;
+  final bool hasPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +59,14 @@ class PuzzleGlassmorphicContainer extends StatelessWidget {
                   const Color(0xFFFFFFFF).withOpacity(0.5),
                 ],
               ),
-              child: child,
+              child: Padding(
+                padding: hasPadding
+                    ? isSmallSize
+                        ? const EdgeInsets.all(16.0)
+                        : const EdgeInsets.fromLTRB(16, 50, 16, 32)
+                    : const EdgeInsets.all(0),
+                child: child,
+              ),
             ),
           );
         });

@@ -8,6 +8,8 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  lottie: ^1.2.2
+  pixabay_picker: ^1.0.6
   image: ^3.1.1
   file_picker: ^4.4.0
   rxdart: ^0.27.3
@@ -39,6 +41,7 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
+    - assets/
     - assets/audio/
     - assets/images/
     - assets/images/audio_control/

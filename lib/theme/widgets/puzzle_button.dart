@@ -38,6 +38,7 @@ class PuzzleButton extends StatelessWidget {
     final buttonBackgroundColor = backgroundColor ?? theme.buttonColor;
 
     return Container(
+      margin: const EdgeInsets.symmetric(vertical: 32),
       width: 145,
       height: 44,
       decoration: BoxDecoration(

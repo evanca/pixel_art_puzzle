@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
+import 'package:pixel_art_puzzle/pixabay_images/pixabay_view.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
 import '/layout/layout.dart';
@@ -8,12 +8,14 @@ import '/picture_upload/picture_upload_helper.dart';
 import '/puzzle/puzzle.dart';
 import '/theme/theme.dart';
 import '../app/size_helper.dart';
+import '../pixabay_images/pixabay_helper.dart';
 import '../widgets/glassmorphic_container.dart';
 
 class PictureUploadPage extends StatelessWidget {
   PictureUploadPage({Key? key}) : super(key: key);
 
-  final PictureUploadHelper _helper = PictureUploadHelper.instance;
+  final PictureUploadHelper _pictureUploadHelper = PictureUploadHelper.instance;
+  final PixabayHelper _pixabayHelper = PixabayHelper.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class PictureUploadPage extends StatelessWidget {
           ),
           child: PuzzleGlassmorphicContainer(
             child: StreamBuilder<PictureUploadState>(
-              stream: _helper.state,
+              stream: _pictureUploadHelper.state,
               builder: (context, snapshot) {
                 if (snapshot.data?.loading == true) {
                   return Center(child: Text(context.l10n.pixelating));
@@ -40,11 +42,20 @@ class PictureUploadPage extends StatelessWidget {
                 return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 32.0),
-                      Text(context.l10n.uploadPicture),
-                      SizedBox(height: isSmallSize ? 16.0 : 32.0),
+                      if (snapshot.data?.outputCropped == null)
+                        Expanded(
+                          flex: 3,
+                          child: PixabayView(
+                            pictureCount: isSmallSize ? 4 : 8,
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: Text(context.l10n.uploadPicture),
+                      ),
                       IconButton(
-                        onPressed: _helper.pickImage,
+                        padding: EdgeInsets.all(isSmallSize ? 16.0 : 32.0),
+                        onPressed: _pictureUploadHelper.pickImage,
                         icon: Image.asset(
                           'assets/images/up-arrow_12px.png',
                           height: 64,
@@ -53,26 +64,20 @@ class PictureUploadPage extends StatelessWidget {
                           filterQuality: FilterQuality.none,
                         ),
                       ),
-                      const Gap(32),
                       if (snapshot.data?.outputCropped != null && !isSmallSize)
                         Flexible(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Spacer(),
-                              Expanded(
-                                child: AspectRatio(
-                                  aspectRatio: 1,
-                                  child: snapshot.data?.inputCropped,
-                                ),
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: snapshot.data?.inputCropped,
                               ),
                               SizedBox(width: isSmallSize ? 8.0 : 32.0),
-                              Expanded(
-                                child: AspectRatio(
-                                  aspectRatio: 1,
-                                  child: snapshot.data?.outputCropped,
-                                ),
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: snapshot.data?.outputCropped,
                               ),
-                              const Spacer(),
                             ],
                           ),
                         ),
@@ -96,7 +101,6 @@ class PictureUploadPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                      const SizedBox(height: 32.0),
                       if (snapshot.data?.outputCropped != null)
                         PuzzleButton(
                           onPressed: () {
@@ -110,7 +114,6 @@ class PictureUploadPage extends StatelessWidget {
                           },
                           child: Text(context.l10n.letsPlay.toUpperCase()),
                         ),
-                      const SizedBox(height: 32.0),
                     ]);
               },
             ),

@@ -101,6 +101,7 @@ class _Puzzle extends StatelessWidget {
             height: 32,
           ),
         const PuzzleGlassmorphicContainer(
+            hasPadding: false,
             smallWidth: double.infinity,
             smallHeight: 150,
             largeWidth: double.infinity,

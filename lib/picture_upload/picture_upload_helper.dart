@@ -76,6 +76,20 @@ class PictureUploadHelper {
         Image.memory(img.encodeJpg(cropped) as Uint8List);
   }
 
+  void setPixabayImage(img.Image pixabayImage) {
+    _currentState.outputCropped = null;
+    _currentState.loading = true;
+    _state.add(_currentState);
+
+    decodedInput = pixabayImage;
+
+    cropSquare(decodedInput!);
+    cropSquareAndPixelate(decodedInput!);
+
+    _currentState.loading = false;
+    _state.add(_currentState);
+  }
+
   void clearState() {
     _currentState = PictureUploadState();
     _state.add(_currentState);
