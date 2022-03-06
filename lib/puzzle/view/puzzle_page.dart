@@ -4,13 +4,11 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
-import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
 import 'package:pixel_art_puzzle/models/models.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
-import 'package:pixel_art_puzzle/typography/typography.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_flex_container.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
@@ -247,25 +245,6 @@ class PuzzleHeader extends StatelessWidget {
   }
 }
 
-/// {@template puzzle_logo}
-/// Displays the logo of the puzzle.
-/// {@endtemplate}
-@visibleForTesting
-class PuzzleLogo extends StatelessWidget {
-  /// {@macro puzzle_logo}
-  const PuzzleLogo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-
-    return AppFlutterLogo(
-      key: puzzleLogoKey,
-      isColored: theme.isLogoColored,
-    );
-  }
-}
-
 /// {@template puzzle_sections}
 /// Displays start and end sections of the puzzle.
 /// {@endtemplate}
@@ -381,168 +360,6 @@ class _PuzzleTile extends StatelessWidget {
         : theme.layoutDelegate.tileBuilder(tile, state);
   }
 }
-
-/// {@template puzzle_menu}
-/// Displays the menu of the puzzle.
-/// {@endtemplate}
-@visibleForTesting
-class PuzzleMenu extends StatelessWidget {
-  /// {@macro puzzle_menu}
-  const PuzzleMenu({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final themes = context.select((ThemeBloc bloc) => bloc.state.themes);
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ...List.generate(
-          themes.length,
-          (index) => PuzzleMenuItem(
-            theme: themes[index],
-            themeIndex: index,
-          ),
-        ),
-        ResponsiveLayoutBuilder(
-          small: (_, child) => const SizedBox(),
-          medium: (_, child) => child!,
-          large: (_, child) => child!,
-          child: (currentSize) {
-            return Row(
-              children: [
-                const Gap(44),
-                AudioControl(
-                  key: audioControlKey,
-                )
-              ],
-            );
-          },
-        ),
-      ],
-    );
-  }
-}
-
-/// {@template puzzle_menu_item}
-/// Displays the menu item of the [PuzzleMenu].
-/// {@endtemplate}
-@visibleForTesting
-class PuzzleMenuItem extends StatelessWidget {
-  /// {@macro puzzle_menu_item}
-  const PuzzleMenuItem({
-    Key? key,
-    required this.theme,
-    required this.themeIndex,
-  }) : super(key: key);
-
-  /// The theme corresponding to this menu item.
-  final PuzzleTheme theme;
-
-  /// The index of [theme] in [ThemeState.themes].
-  final int themeIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    final currentTheme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final isCurrentTheme = theme == currentTheme;
-
-    return ResponsiveLayoutBuilder(
-      small: (_, child) => Column(
-        children: [
-          Container(
-            width: 100,
-            height: 40,
-            decoration: isCurrentTheme
-                ? BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        width: 2,
-                        color: currentTheme.menuUnderlineColor,
-                      ),
-                    ),
-                  )
-                : null,
-            child: child,
-          ),
-        ],
-      ),
-      medium: (_, child) => child!,
-      large: (_, child) => child!,
-      child: (currentSize) {
-        final leftPadding =
-            themeIndex > 0 && currentSize != ResponsiveLayoutSize.small
-                ? 40.0
-                : 0.0;
-
-        return Padding(
-          padding: EdgeInsets.only(left: leftPadding),
-          child: Tooltip(
-            message:
-                theme != currentTheme ? context.l10n.puzzleChangeTooltip : '',
-            child: TextButton(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-              ).copyWith(
-                overlayColor: MaterialStateProperty.all(Colors.transparent),
-              ),
-              onPressed: () {
-                // Ignore if this theme is already selected.
-                if (theme == currentTheme) {
-                  return;
-                }
-
-                // Update the currently selected theme.
-                context
-                    .read<ThemeBloc>()
-                    .add(ThemeChanged(themeIndex: themeIndex));
-
-                // Reset the timer of the currently running puzzle.
-                context.read<TimerBloc>().add(const TimerReset());
-
-                // Stop the Dashatar countdown if it has been started.
-                context.read<DashatarPuzzleBloc>().add(
-                      const DashatarCountdownStopped(),
-                    );
-
-                // Initialize the puzzle board for the newly selected theme.
-                context.read<PuzzleBloc>().add(
-                      const PuzzleInitialized(
-                        shufflePuzzle: false,
-                      ),
-                    );
-              },
-              child: AnimatedDefaultTextStyle(
-                duration: PuzzleThemeAnimationDuration.duration,
-                style: PuzzleTextStyle.headline5.copyWith(
-                  color: isCurrentTheme
-                      ? currentTheme.menuActiveColor
-                      : currentTheme.menuInactiveColor,
-                ),
-                child: Text(theme.name),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-/// The global key of [PuzzleLogo].
-///
-/// Used to animate the transition of [PuzzleLogo] when changing a theme.
-final puzzleLogoKey = GlobalKey(debugLabel: 'puzzle_logo');
-
-/// The global key of [PuzzleName].
-///
-/// Used to animate the transition of [PuzzleName] when changing a theme.
-final puzzleNameKey = GlobalKey(debugLabel: 'puzzle_name');
-
-/// The global key of [PuzzleTitle].
-///
-/// Used to animate the transition of [PuzzleTitle] when changing a theme.
-final puzzleTitleKey = GlobalKey(debugLabel: 'puzzle_title');
 
 /// The global key of [NumberOfMovesAndTilesLeft].
 ///
