@@ -40,8 +40,5 @@ class PixelArtTheme extends DashatarTheme {
       'assets/images/audio_control/mute_12px.png';
 
   @override
-  String get audioAsset => 'assets/audio/skateboard.mp3';
-
-  @override
   String get dashAssetsDirectory => 'assets/images/dashatar/green';
 }

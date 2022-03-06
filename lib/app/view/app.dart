@@ -41,9 +41,6 @@ class _AppState extends State<App> {
   static final audioAssets = [
     'assets/audio/shuffle.mp3',
     'assets/audio/click.mp3',
-    'assets/audio/dumbbell.mp3',
-    'assets/audio/sandwich.mp3',
-    'assets/audio/skateboard.mp3',
     'assets/audio/success.mp3',
     'assets/audio/tile_move.mp3',
   ];
