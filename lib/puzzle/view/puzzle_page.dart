@@ -17,6 +17,7 @@ import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
 import '../../app/size_helper.dart';
 import '../../preferences/preferences.dart';
+import '../../widgets/back_button.dart';
 import '../../widgets/leaderboard_button.dart';
 
 /// {@template puzzle_page}
@@ -350,7 +351,10 @@ class PuzzleBoard extends StatelessWidget {
                   .toList(),
             ),
             const Gap(32),
-            const DashatarPuzzleActionButton()
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              PuzzleBackButton(),
+              DashatarPuzzleActionButton()
+            ])
           ],
         ),
       ),

@@ -9,13 +9,26 @@ import '/puzzle/puzzle.dart';
 import '/theme/theme.dart';
 import '../app/size_helper.dart';
 import '../pixabay_images/pixabay_helper.dart';
+import '../widgets/back_button.dart';
 import '../widgets/glassmorphic_container.dart';
 
-class PictureUploadPage extends StatelessWidget {
-  PictureUploadPage({Key? key}) : super(key: key);
+class PictureUploadPage extends StatefulWidget {
+  const PictureUploadPage({Key? key}) : super(key: key);
 
+  @override
+  State<PictureUploadPage> createState() => _PictureUploadPageState();
+}
+
+class _PictureUploadPageState extends State<PictureUploadPage> {
   final PictureUploadHelper _pictureUploadHelper = PictureUploadHelper.instance;
   final PixabayHelper _pixabayHelper = PixabayHelper.instance;
+
+  @override
+  void dispose() {
+    _pictureUploadHelper.clearState();
+    _pixabayHelper.clearState();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,99 +36,111 @@ class PictureUploadPage extends StatelessWidget {
         SizeHelper.getSize(context) == ResponsiveLayoutSize.small;
 
     return PuzzleMultiBlocProvider(
-      child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/pixel_bg.png'),
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.none),
-          ),
-          child: PuzzleGlassmorphicContainer(
-            child: StreamBuilder<PictureUploadState>(
-              stream: _pictureUploadHelper.state,
-              builder: (context, snapshot) {
-                if (snapshot.data?.loading == true) {
-                  return Center(child: Text(context.l10n.pixelating));
-                }
+      child: WillPopScope(
+        onWillPop: () async {
+          return true;
+        },
+        child: Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/pixel_bg.png'),
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.none),
+            ),
+            child: PuzzleGlassmorphicContainer(
+              child: StreamBuilder<PictureUploadState>(
+                stream: _pictureUploadHelper.state,
+                builder: (context, snapshot) {
+                  if (snapshot.data?.loading == true) {
+                    return Center(child: Text(context.l10n.pixelating));
+                  }
 
-                return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (snapshot.data?.outputCropped == null)
-                        Expanded(
-                          flex: 3,
-                          child: PixabayView(
-                            pictureCount: isSmallSize ? 4 : 8,
+                  return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (snapshot.data?.outputCropped == null)
+                          Expanded(
+                            flex: 3,
+                            child: PixabayView(
+                              pictureCount: isSmallSize ? 4 : 8,
+                            ),
+                          ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: Text(context.l10n.uploadPicture),
+                        ),
+                        IconButton(
+                          padding: EdgeInsets.all(isSmallSize ? 16.0 : 32.0),
+                          onPressed: _pictureUploadHelper.pickImage,
+                          icon: Image.asset(
+                            'assets/images/up-arrow_12px.png',
+                            height: 64,
+                            width: 64,
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.none,
                           ),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text(context.l10n.uploadPicture),
-                      ),
-                      IconButton(
-                        padding: EdgeInsets.all(isSmallSize ? 16.0 : 32.0),
-                        onPressed: _pictureUploadHelper.pickImage,
-                        icon: Image.asset(
-                          'assets/images/up-arrow_12px.png',
-                          height: 64,
-                          width: 64,
-                          fit: BoxFit.contain,
-                          filterQuality: FilterQuality.none,
-                        ),
-                      ),
-                      if (snapshot.data?.outputCropped != null && !isSmallSize)
-                        Flexible(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              AspectRatio(
-                                aspectRatio: 1,
-                                child: snapshot.data?.inputCropped,
-                              ),
-                              SizedBox(width: isSmallSize ? 8.0 : 32.0),
-                              AspectRatio(
-                                aspectRatio: 1,
-                                child: snapshot.data?.outputCropped,
-                              ),
-                            ],
-                          ),
-                        ),
-                      if (snapshot.data?.outputCropped != null && isSmallSize)
-                        Flexible(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: AspectRatio(
+                        if (snapshot.data?.outputCropped != null &&
+                            !isSmallSize)
+                          Flexible(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AspectRatio(
                                   aspectRatio: 1,
                                   child: snapshot.data?.inputCropped,
                                 ),
-                              ),
-                              SizedBox(height: isSmallSize ? 8.0 : 32.0),
-                              Expanded(
-                                child: AspectRatio(
+                                SizedBox(width: isSmallSize ? 8.0 : 32.0),
+                                AspectRatio(
                                   aspectRatio: 1,
                                   child: snapshot.data?.outputCropped,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      if (snapshot.data?.outputCropped != null)
-                        PuzzleButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    const PuzzlePage(),
-                              ),
-                            );
-                          },
-                          child: Text(context.l10n.letsPlay.toUpperCase()),
-                        ),
-                    ]);
-              },
+                        if (snapshot.data?.outputCropped != null && isSmallSize)
+                          Flexible(
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: snapshot.data?.inputCropped,
+                                  ),
+                                ),
+                                SizedBox(height: isSmallSize ? 8.0 : 32.0),
+                                Expanded(
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: snapshot.data?.outputCropped,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        if (snapshot.data?.outputCropped != null)
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const PuzzleBackButton(),
+                                PuzzleButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute<void>(
+                                        builder: (BuildContext context) =>
+                                            const PuzzlePage(),
+                                      ),
+                                    );
+                                  },
+                                  child:
+                                      Text(context.l10n.letsPlay.toUpperCase()),
+                                )
+                              ]),
+                      ]);
+                },
+              ),
             ),
           ),
         ),

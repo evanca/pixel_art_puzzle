@@ -7,6 +7,7 @@ import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/models/highscore.dart';
 import 'package:pixel_art_puzzle/preferences/preferences.dart';
 import 'package:pixel_art_puzzle/typography/text_styles.dart';
+import 'package:pixel_art_puzzle/widgets/back_button.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 
 import 'app/size_helper.dart';
@@ -115,7 +116,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                       }),
                     ),
                   ),
-                )
+                ),
+                const PuzzleBackButton()
               ],
             ),
           ),

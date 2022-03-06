@@ -3,6 +3,7 @@ import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/picture_upload/picture_upload_page.dart';
 import 'package:pixel_art_puzzle/preferences/preferences.dart';
 import 'package:pixel_art_puzzle/theme/widgets/puzzle_button.dart';
+import 'package:pixel_art_puzzle/widgets/back_button.dart';
 import 'package:pixel_art_puzzle/widgets/difficulty_button.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
@@ -78,16 +79,23 @@ class SelectDifficultyPage extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 32.0),
-                PuzzleButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => PictureUploadPage(),
-                      ),
-                    );
-                  },
-                  child: Text(context.l10n.globalNext.toUpperCase()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const PuzzleBackButton(),
+                    PuzzleButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                const PictureUploadPage(),
+                          ),
+                        );
+                      },
+                      child: Text(context.l10n.globalNext.toUpperCase()),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 32.0),
               ],

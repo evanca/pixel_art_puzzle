@@ -18,15 +18,15 @@ class CustomPixabayProvider extends PixabayMediaProvider {
 
     if (media == MediaType.video) url += "videos/";
 
-    if (resultsPerPage < 3) // API restriction
+    if (resultsPerPage < 3) {
       resultsPerPage = 3;
+    }
 
     url += "?key=" + apiKey;
 
     if (keyword != null) url += "&q=" + Uri.encodeFull(keyword);
 
-    url +=
-        "&lang=" + Uri.encodeFull(this.language) + "&per_page=$resultsPerPage";
+    url += "&lang=" + Uri.encodeFull(language) + "&per_page=$resultsPerPage";
 
     if (category != null) url += "&category=$category";
 
