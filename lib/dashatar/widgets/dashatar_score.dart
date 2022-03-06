@@ -41,7 +41,7 @@ class DashatarScore extends StatelessWidget {
       large: (_, child) => child!,
       child: (currentSize) {
         final height =
-            currentSize == ResponsiveLayoutSize.small ? 374.0 : 355.0;
+            currentSize == ResponsiveLayoutSize.small ? 374.0 : 400.0;
 
         final imageOffset = currentSize == ResponsiveLayoutSize.large
             ? _largeImageOffset
@@ -84,81 +84,77 @@ class DashatarScore extends StatelessWidget {
             smallHeight: height,
             child: Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Gap(16),
-                      AnimatedDefaultTextStyle(
-                        style: PuzzleTextStyle.headline4,
-                        duration: PuzzleThemeAnimationDuration.duration,
-                        child: Text(
-                          l10n.dashatarSuccessCompleted,
-                          textAlign: TextAlign.right,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Spacer(),
+                    AnimatedDefaultTextStyle(
+                      style: PuzzleTextStyle.headline4,
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(
+                        l10n.dashatarSuccessCompleted,
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    AnimatedDefaultTextStyle(
+                      style: PuzzleTextStyle.headline4,
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(
+                        l10n.dashatarSuccessWellDone,
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    const Spacer(),
+                    const ResponsiveGap(
+                      small: 24,
+                      medium: 32,
+                      large: 32,
+                    ),
+                    DashatarTimer(
+                      textStyle: timerTextStyle,
+                      iconSize: timerIconSize,
+                      iconPadding: timerIconPadding,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                    ),
+                    const ResponsiveGap(
+                      small: 8,
+                      medium: 16,
+                      large: 16,
+                    ),
+                    AnimatedDefaultTextStyle(
+                      key: const Key('dashatar_score_number_of_moves'),
+                      style: PuzzleTextStyle.timerTextStyle
+                          .copyWith(color: PuzzleColors.pixel50),
+                      duration: PuzzleThemeAnimationDuration.duration,
+                      child: Text(
+                        l10n.dashatarSuccessNumberOfMoves(
+                          state.numberOfMoves.toString(),
                         ),
                       ),
-                      AnimatedDefaultTextStyle(
-                        style: PuzzleTextStyle.headline4,
-                        duration: PuzzleThemeAnimationDuration.duration,
-                        child: Text(
-                          l10n.dashatarSuccessWellDone,
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      const Spacer(),
-                      const ResponsiveGap(
-                        small: 24,
-                        medium: 32,
-                        large: 32,
-                      ),
-                      DashatarTimer(
-                        textStyle: timerTextStyle,
-                        iconSize: timerIconSize,
-                        iconPadding: timerIconPadding,
+                    ),
+                    const Gap(32),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const LeaderboardPage()));
+                      },
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const LeaderboardButton(),
+                          const Gap(8),
+                          Text(
+                            context.l10n.leaderboard,
+                            style: PuzzleTextStyle.timerTextStyle.copyWith(
+                                color: PuzzleColors.pixelPrimary, fontSize: 18),
+                          )
+                        ],
                       ),
-                      const ResponsiveGap(
-                        small: 8,
-                        medium: 16,
-                        large: 16,
-                      ),
-                      AnimatedDefaultTextStyle(
-                        key: const Key('dashatar_score_number_of_moves'),
-                        style: PuzzleTextStyle.timerTextStyle
-                            .copyWith(color: PuzzleColors.pixel50),
-                        duration: PuzzleThemeAnimationDuration.duration,
-                        child: Text(
-                          l10n.dashatarSuccessNumberOfMoves(
-                            state.numberOfMoves.toString(),
-                          ),
-                        ),
-                      ),
-                      const Gap(32),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const LeaderboardPage()));
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            const LeaderboardButton(),
-                            const Gap(8),
-                            Text(
-                              context.l10n.leaderboard,
-                              style: PuzzleTextStyle.timerTextStyle.copyWith(
-                                  color: PuzzleColors.pixelPrimary,
-                                  fontSize: 18),
-                            )
-                          ],
-                        ),
-                      ),
-                      const Gap(16),
-                    ],
-                  ),
+                    ),
+                    const Gap(16),
+                  ],
                 ),
               ],
             ),

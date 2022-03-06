@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
-import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
@@ -74,17 +73,11 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
           medium: (_, child) => child!,
           large: (_, child) => child!,
           child: (currentSize) {
-            final padding = currentSize == ResponsiveLayoutSize.large
-                ? const EdgeInsets.fromLTRB(68, 82, 68, 73)
-                : (currentSize == ResponsiveLayoutSize.medium
-                    ? const EdgeInsets.fromLTRB(48, 54, 48, 53)
-                    : const EdgeInsets.fromLTRB(20, 99, 20, 76));
+            const padding = EdgeInsets.fromLTRB(16, 64, 16, 64);
 
-            final closeIconOffset = currentSize == ResponsiveLayoutSize.large
-                ? const Offset(44, 37)
-                : (currentSize == ResponsiveLayoutSize.medium
-                    ? const Offset(25, 28)
-                    : const Offset(17, 63));
+            final closeIconOffset = currentSize == ResponsiveLayoutSize.small
+                ? const Offset(16, 32)
+                : const Offset(16, 16);
 
             final crossAxisAlignment = currentSize == ResponsiveLayoutSize.large
                 ? CrossAxisAlignment.start
@@ -139,26 +132,21 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
                     ),
                   ),
                   Positioned(
-                    right: closeIconOffset.dx,
-                    top: closeIconOffset.dy,
-                    child: IconButton(
-                      key: const Key('dashatar_share_dialog_close_button'),
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      iconSize: 18,
-                      icon: const Icon(
-                        Icons.close,
-                        color: PuzzleColors.black,
-                      ),
-                      onPressed: () {
-                        unawaited(_clickAudioPlayer.play());
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
+                      right: closeIconOffset.dx,
+                      top: closeIconOffset.dy,
+                      child: GestureDetector(
+                        onTap: () {
+                          unawaited(_clickAudioPlayer.play());
+                          Navigator.of(context).pop();
+                        },
+                        child: Image.asset(
+                          'assets/images/close_12px.png',
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.none,
+                          width: 36,
+                          height: 36,
+                        ),
+                      )),
                 ],
               ),
             );
