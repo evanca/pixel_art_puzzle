@@ -71,7 +71,7 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
     // to avoid dropping frames when the theme is changed.
     _timer = Timer(const Duration(seconds: 1), () {
       _audioPlayer = widget._audioPlayerFactory()
-        ..setAsset('assets/audio/tile_move.mp3');
+        ..setAsset('assets/audio/tile_move.wav');
     });
   }
 

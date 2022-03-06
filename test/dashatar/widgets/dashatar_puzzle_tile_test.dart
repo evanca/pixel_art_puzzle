@@ -113,7 +113,7 @@ void main() {
       await tester.pumpAndSettle();
 
       verify(() => puzzleBloc.add(TileTapped(tile))).called(1);
-      verify(() => audioPlayer.setAsset('assets/audio/tile_move.mp3'))
+      verify(() => audioPlayer.setAsset('assets/audio/tile_move.wav'))
           .called(1);
       verify(audioPlayer.play).called(1);
     });

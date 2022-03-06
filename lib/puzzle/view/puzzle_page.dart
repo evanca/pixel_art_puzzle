@@ -171,7 +171,7 @@ class PuzzleHeader extends StatelessWidget {
               children: [
                 const DashatarTimer(mainAxisAlignment: MainAxisAlignment.start),
                 const Spacer(),
-                const LeaderboardButton(),
+                LeaderboardButton(),
                 SizedBox(
                   width: padding,
                 ),
@@ -208,7 +208,7 @@ class PuzzleHeader extends StatelessWidget {
             const Spacer(),
             const DashatarTimer(),
             const Spacer(),
-            const LeaderboardButton(),
+            LeaderboardButton(),
             Gap(padding),
             AudioControl(key: audioControlKey),
             Gap(padding),
@@ -234,7 +234,7 @@ class PuzzleHeader extends StatelessWidget {
             const Spacer(),
             const DashatarTimer(),
             const Spacer(),
-            const LeaderboardButton(),
+            LeaderboardButton(),
             Gap(padding),
             AudioControl(key: audioControlKey),
             Gap(padding),
@@ -330,9 +330,9 @@ class PuzzleBoard extends StatelessWidget {
                   .toList(),
             ),
             const Gap(32),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               PuzzleBackButton(),
-              DashatarPuzzleActionButton()
+              const DashatarPuzzleActionButton()
             ])
           ],
         ),

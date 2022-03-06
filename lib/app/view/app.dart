@@ -39,10 +39,10 @@ class _AppState extends State<App> {
   ];
 
   static final audioAssets = [
-    'assets/audio/shuffle.mp3',
-    'assets/audio/click.mp3',
-    'assets/audio/success.mp3',
-    'assets/audio/tile_move.mp3',
+    'assets/audio/shuffle.wav',
+    'assets/audio/click.wav',
+    'assets/audio/success.wav',
+    'assets/audio/tile_move.wav',
   ];
 
   late final PlatformHelper _platformHelper;

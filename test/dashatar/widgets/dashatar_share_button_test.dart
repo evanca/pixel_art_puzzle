@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
+import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 
 import '../../helpers/helpers.dart';
 
@@ -121,7 +121,7 @@ void main() {
 
       await tester.tap(find.byType(DashatarShareButton));
 
-      verify(() => audioPlayer.setAsset('assets/audio/click.mp3')).called(1);
+      verify(() => audioPlayer.setAsset('assets/audio/click.wav')).called(1);
       verify(audioPlayer.play).called(1);
     });
 

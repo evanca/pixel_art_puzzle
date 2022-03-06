@@ -1,15 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
+
+import '../../audio_control/widget/audio_control_listener.dart';
+import '../../helpers/audio_player.dart';
 
 /// {@template puzzle_button}
 /// Displays the puzzle action button.
 /// {@endtemplate}
 class PuzzleButton extends StatelessWidget {
   /// {@macro puzzle_button}
-  const PuzzleButton({
+  PuzzleButton({
     Key? key,
     required this.child,
     required this.onPressed,
@@ -31,40 +37,52 @@ class PuzzleButton extends StatelessWidget {
   /// The label of this button.
   final Widget child;
 
+  final AudioPlayer _clickAudioPlayer = getAudioPlayer()
+    ..setAsset('assets/audio/click.wav');
+
   @override
   Widget build(BuildContext context) {
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final buttonTextColor = textColor ?? PuzzleColors.white;
     final buttonBackgroundColor = backgroundColor ?? theme.buttonColor;
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 32),
-      width: 145,
-      height: 44,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            PuzzleColors.pixelPrimary,
-            PuzzleColors.pixelPrimary.withOpacity(0.7)
-          ],
-          stops: const [0.0, 1.0],
-        ),
-        borderRadius: BorderRadius.circular(22),
-      ),
-      child: AnimatedTextButton(
-        duration: PuzzleThemeAnimationDuration.duration,
-        style: TextButton.styleFrom(
-          padding: EdgeInsets.zero,
-          textStyle: PuzzleTextStyle.headline5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(22),
+    return AudioControlListener(
+      audioPlayer: _clickAudioPlayer,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 32),
+        width: 145,
+        height: 44,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              PuzzleColors.pixelPrimary,
+              PuzzleColors.pixelPrimary.withOpacity(0.7)
+            ],
+            stops: const [0.0, 1.0],
           ),
-        ).copyWith(
-          backgroundColor: MaterialStateProperty.all(Colors.transparent),
-          foregroundColor: MaterialStateProperty.all(buttonTextColor),
+          borderRadius: BorderRadius.circular(22),
         ),
-        onPressed: onPressed,
-        child: child,
+        child: AnimatedTextButton(
+          duration: PuzzleThemeAnimationDuration.duration,
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            textStyle: PuzzleTextStyle.headline5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(22),
+            ),
+          ).copyWith(
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            foregroundColor: MaterialStateProperty.all(buttonTextColor),
+          ),
+          onPressed: () {
+            unawaited(_clickAudioPlayer.play());
+
+            if (onPressed != null) {
+              onPressed!();
+            }
+          },
+          child: child,
+        ),
       ),
     );
   }

@@ -36,7 +36,7 @@ class _DashatarCountdownState extends State<DashatarCountdown> {
   void initState() {
     super.initState();
     _audioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/shuffle.mp3');
+      ..setAsset('assets/audio/shuffle.wav');
   }
 
   @override

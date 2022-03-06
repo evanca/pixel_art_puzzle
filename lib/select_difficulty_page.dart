@@ -82,7 +82,7 @@ class SelectDifficultyPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const PuzzleBackButton(),
+                    PuzzleBackButton(),
                     PuzzleButton(
                       onPressed: () {
                         Navigator.push(

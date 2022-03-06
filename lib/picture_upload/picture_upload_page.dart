@@ -123,7 +123,7 @@ class _PictureUploadPageState extends State<PictureUploadPage> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const PuzzleBackButton(),
+                                PuzzleBackButton(),
                                 PuzzleButton(
                                   onPressed: () {
                                     Navigator.push(

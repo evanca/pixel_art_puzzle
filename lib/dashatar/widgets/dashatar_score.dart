@@ -143,7 +143,7 @@ class DashatarScore extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          const LeaderboardButton(),
+                          LeaderboardButton(),
                           const Gap(8),
                           Text(
                             context.l10n.leaderboard,

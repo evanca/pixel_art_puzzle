@@ -36,11 +36,11 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
     super.initState();
 
     _successAudioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/success.mp3');
+      ..setAsset('assets/audio/success.wav');
     unawaited(_successAudioPlayer.play());
 
     _clickAudioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/click.mp3');
+      ..setAsset('assets/audio/click.wav');
 
     _controller = AnimationController(
       vsync: this,
