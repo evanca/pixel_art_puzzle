@@ -7,6 +7,9 @@ import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/layout/layout.dart';
 
+import '../../colors/colors.dart';
+import '../../confetti_animation/confetti_widget.dart';
+
 /// {@template dashatar_share_dialog}
 /// Displays a Dashatar share dialog with a score of the completed puzzle
 /// and an option to share the score using Twitter or Facebook.
@@ -31,6 +34,9 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
   late final AudioPlayer _successAudioPlayer;
   late final AudioPlayer _clickAudioPlayer;
 
+  final ConfettiController _confettiController =
+      ConfettiController(duration: const Duration(seconds: 10));
+
   @override
   void initState() {
     super.initState();
@@ -50,6 +56,8 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
       const Duration(milliseconds: 140),
       _controller.forward,
     );
+
+    _confettiController.play();
   }
 
   @override
@@ -107,13 +115,7 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: crossAxisAlignment,
                                   children: [
-                                    SlideTransition(
-                                      position: animation.scoreOffset,
-                                      child: Opacity(
-                                        opacity: animation.scoreOpacity.value,
-                                        child: const DashatarScore(),
-                                      ),
-                                    ),
+                                    const DashatarScore(),
                                     const ResponsiveGap(
                                       small: 40,
                                       medium: 40,
@@ -131,22 +133,41 @@ class _DashatarShareDialogState extends State<DashatarShareDialog>
                       },
                     ),
                   ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: ConfettiWidget(
+                        confettiController: _confettiController,
+                        blastDirectionality: BlastDirectionality.explosive,
+                        shouldLoop: false,
+                        emissionFrequency: 0.1,
+                        canvas: Size.fromRadius(
+                            MediaQuery.of(context).size.height * .35),
+                        colors: const [
+                          PuzzleColors.pixelPrimary,
+                          PuzzleColors.pixel90,
+                          PuzzleColors.difficultyInsane,
+                          PuzzleColors.white,
+                          PuzzleColors.superPink,
+                          PuzzleColors.iconYellow
+                        ]),
+                  ),
                   Positioned(
-                      right: closeIconOffset.dx,
-                      top: closeIconOffset.dy,
-                      child: GestureDetector(
-                        onTap: () {
-                          unawaited(_clickAudioPlayer.play());
-                          Navigator.of(context).pop();
-                        },
-                        child: Image.asset(
-                          'assets/images/close_12px.png',
-                          fit: BoxFit.contain,
-                          filterQuality: FilterQuality.none,
-                          width: 36,
-                          height: 36,
-                        ),
-                      )),
+                    right: closeIconOffset.dx,
+                    top: closeIconOffset.dy,
+                    child: GestureDetector(
+                      onTap: () {
+                        unawaited(_clickAudioPlayer.play());
+                        Navigator.of(context).pop();
+                      },
+                      child: Image.asset(
+                        'assets/images/close_12px.png',
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.none,
+                        width: 36,
+                        height: 36,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );

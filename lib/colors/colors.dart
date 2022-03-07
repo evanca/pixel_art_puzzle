@@ -20,6 +20,9 @@ abstract class PuzzleColors {
   /// Super Pink
   static const Color superPink = Color(0xFFC46BAE);
 
+  /// Icon Yellow
+  static const Color iconYellow = Color(0xFFFFC63A);
+
   /// Pixel primary
   static const Color pixelPrimary = Color(0xFFE0607E);
 
