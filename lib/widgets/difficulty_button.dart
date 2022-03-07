@@ -49,7 +49,7 @@ class DifficultyButton extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.all(isSmallSize ? 4.0 : 16.0),
-              padding: EdgeInsets.all(isSmallSize ? 8.0 : 24.0),
+              padding: EdgeInsets.all(isSmallSize ? 10.0 : 24.0),
               width: isSmallSize ? 64 : 100,
               height: isSmallSize ? 64 : 100,
               decoration:
@@ -61,6 +61,8 @@ class DifficultyButton extends StatelessWidget {
               ),
             ),
             Container(
+              width: 100,
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(4),
               child: Text(label),
               decoration: BoxDecoration(
