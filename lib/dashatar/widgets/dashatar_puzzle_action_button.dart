@@ -36,7 +36,7 @@ class _DashatarPuzzleActionButtonState
   void initState() {
     super.initState();
     _audioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/click.wav');
+      ..setAsset('assets/audio/click.mp3');
   }
 
   @override

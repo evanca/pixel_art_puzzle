@@ -121,7 +121,7 @@ void main() {
 
       await tester.tap(find.byType(DashatarShareButton));
 
-      verify(() => audioPlayer.setAsset('assets/audio/click.wav')).called(1);
+      verify(() => audioPlayer.setAsset('assets/audio/click.mp3')).called(1);
       verify(audioPlayer.play).called(1);
     });
 

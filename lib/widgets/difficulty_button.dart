@@ -18,7 +18,7 @@ class DifficultyButton extends StatelessWidget {
   final String label;
 
   final AudioPlayer _clickAudioPlayer = getAudioPlayer()
-    ..setAsset('assets/audio/click.wav');
+    ..setAsset('assets/audio/click.mp3');
 
   DifficultyButton(
       {Key? key,

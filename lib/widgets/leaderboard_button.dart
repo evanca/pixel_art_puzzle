@@ -11,7 +11,7 @@ class LeaderboardButton extends StatelessWidget {
   LeaderboardButton({Key? key}) : super(key: key);
 
   final AudioPlayer _clickAudioPlayer = getAudioPlayer()
-    ..setAsset('assets/audio/click.wav');
+    ..setAsset('assets/audio/click.mp3');
 
   @override
   Widget build(BuildContext context) {
