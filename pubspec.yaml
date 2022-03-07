@@ -8,6 +8,7 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  firebase_core: ^1.13.1
   lottie: ^1.2.2
   pixabay_picker: ^1.0.6
   image: ^3.1.1
