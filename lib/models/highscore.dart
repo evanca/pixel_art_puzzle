@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:pixel_art_puzzle/helpers/storage_helper.dart';
 
 import '../preferences/preferences.dart';
 
@@ -44,6 +45,8 @@ class HighScore {
   }
 
   save() {
+    StorageHelper().saveHighScore(this);
+
     var initialHighScores = Prefs().highScores.getValue();
     List currentHighScores = [];
 
