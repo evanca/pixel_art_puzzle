@@ -8,6 +8,7 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  http: ^0.13.4
   firebase_database: ^9.0.8
   firebase_core: ^1.13.1
   lottie: ^1.2.2

@@ -15,12 +15,12 @@ class StorageHelper {
     ref = FirebaseDatabase.instance.ref(); //database reference object
   }
 
-  saveHighScore(HighScore score) async {
+  saveHighScore(Map map) async {
     if (ref == null) {
       init();
     }
 
-    await ref?.push().set(score.toMap());
+    await ref?.push().set(map);
   }
 
   Future<List<HighScore>> retrieveHighScores() async {

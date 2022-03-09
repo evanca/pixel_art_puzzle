@@ -14,6 +14,8 @@ class Prefs {
     _prefs ??= await StreamingSharedPreferences.instance;
   }
 
+  late Preference<String> flag = _prefs!.getString(keyFlag, defaultValue: '');
+
   late Preference<String> highScores =
       _prefs!.getString(keyHighScores, defaultValue: '');
 
