@@ -28,22 +28,10 @@ class DashatarShareYourScore extends StatelessWidget {
       medium: (_, child) => child!,
       large: (_, child) => child!,
       child: (currentSize) {
-        final titleTextStyle = currentSize == ResponsiveLayoutSize.small
-            ? PuzzleTextStyle.headline4
-            : PuzzleTextStyle.headline3;
-
-        final messageTextStyle = currentSize == ResponsiveLayoutSize.small
-            ? PuzzleTextStyle.bodyXSmall
-            : PuzzleTextStyle.bodySmall;
-
         final titleAndMessageCrossAxisAlignment =
             currentSize == ResponsiveLayoutSize.large
                 ? CrossAxisAlignment.start
                 : CrossAxisAlignment.center;
-
-        final textAlign = currentSize == ResponsiveLayoutSize.large
-            ? TextAlign.left
-            : TextAlign.center;
 
         final messageWidth = currentSize == ResponsiveLayoutSize.large
             ? double.infinity

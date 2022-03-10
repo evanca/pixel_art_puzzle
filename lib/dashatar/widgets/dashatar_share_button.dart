@@ -9,11 +9,11 @@ import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
 
-/// The url to share for this Flutter Puzzle challenge.
-const _shareUrl = 'https://flutterhack.devpost.com/';
+/// The url to share for this Pixel Art Puzzle challenge.
+const _shareUrl = 'https://flutterhack.devpost.com/'; // TODO:
 
 /// {@template dashatar_twitter_button}
-/// Displays a button that shares the Flutter Puzzle challenge
+/// Displays a button that shares the Pixel Art Puzzle challenge
 /// on Twitter when tapped.
 /// {@endtemplate}
 class DashatarTwitterButton extends StatelessWidget {
@@ -42,7 +42,7 @@ class DashatarTwitterButton extends StatelessWidget {
 }
 
 /// {@template dashatar_facebook_button}
-/// Displays a button that shares the Flutter Puzzle challenge
+/// Displays a button that shares the Pixel Art Puzzle challenge
 /// on Facebook when tapped.
 /// {@endtemplate}
 class DashatarFacebookButton extends StatelessWidget {

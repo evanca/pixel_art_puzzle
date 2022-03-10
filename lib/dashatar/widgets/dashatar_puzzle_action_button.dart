@@ -48,8 +48,6 @@ class _DashatarPuzzleActionButtonState
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((DashatarThemeBloc bloc) => bloc.state.theme);
-
     final status =
         context.select((DashatarPuzzleBloc bloc) => bloc.state.status);
     final isLoading = status == DashatarPuzzleStatus.loading;

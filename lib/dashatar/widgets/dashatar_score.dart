@@ -12,7 +12,6 @@ import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 
 import '../../colors/colors.dart';
 import '../../leaderboard_page.dart';
-import '../../timer/bloc/timer_bloc.dart';
 import '../../widgets/leaderboard_button.dart';
 
 /// {@template dashatar_score}
@@ -22,18 +21,10 @@ class DashatarScore extends StatelessWidget {
   /// {@macro dashatar_score}
   const DashatarScore({Key? key}) : super(key: key);
 
-  static const _smallImageOffset = Offset(124, 36);
-  static const _mediumImageOffset = Offset(215, -47);
-  static const _largeImageOffset = Offset(215, -47);
-
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((DashatarThemeBloc bloc) => bloc.state.theme);
     final state = context.watch<PuzzleBloc>().state;
     final l10n = context.l10n;
-
-    final secondsElapsed =
-        context.select((TimerBloc bloc) => bloc.state.secondsElapsed);
 
     return ResponsiveLayoutBuilder(
       small: (_, child) => child!,
@@ -42,22 +33,6 @@ class DashatarScore extends StatelessWidget {
       child: (currentSize) {
         final height =
             currentSize == ResponsiveLayoutSize.small ? 374.0 : 400.0;
-
-        final imageOffset = currentSize == ResponsiveLayoutSize.large
-            ? _largeImageOffset
-            : (currentSize == ResponsiveLayoutSize.medium
-                ? _mediumImageOffset
-                : _smallImageOffset);
-
-        final imageHeight =
-            currentSize == ResponsiveLayoutSize.small ? 374.0 : 437.0;
-
-        final completedTextWidth =
-            currentSize == ResponsiveLayoutSize.small ? 160.0 : double.infinity;
-
-        final wellDoneTextStyle = currentSize == ResponsiveLayoutSize.small
-            ? PuzzleTextStyle.headline4Soft
-            : PuzzleTextStyle.headline3;
 
         final timerTextStyle = currentSize == ResponsiveLayoutSize.small
             ? PuzzleTextStyle.headline5
@@ -69,10 +44,6 @@ class DashatarScore extends StatelessWidget {
 
         final timerIconPadding =
             currentSize == ResponsiveLayoutSize.small ? 4.0 : 6.0;
-
-        final numberOfMovesTextStyle = currentSize == ResponsiveLayoutSize.small
-            ? PuzzleTextStyle.headline5
-            : PuzzleTextStyle.headline4;
 
         return ClipRRect(
           key: const Key('dashatar_score'),
