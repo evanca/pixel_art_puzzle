@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
@@ -42,9 +41,8 @@ class PuzzleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final buttonTextColor = textColor ?? PuzzleColors.white;
-    final buttonBackgroundColor = backgroundColor ?? theme.buttonColor;
+    final buttonBackgroundColor = backgroundColor ?? PuzzleColors.pixelPrimary;
 
     return AudioControlListener(
       audioPlayer: _clickAudioPlayer,
@@ -55,8 +53,8 @@ class PuzzleButton extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              PuzzleColors.pixelPrimary,
-              PuzzleColors.pixelPrimary.withOpacity(0.7)
+              buttonBackgroundColor,
+              buttonBackgroundColor.withOpacity(0.7)
             ],
             stops: const [0.0, 1.0],
           ),

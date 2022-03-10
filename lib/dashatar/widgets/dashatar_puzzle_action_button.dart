@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
+import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
@@ -92,7 +93,7 @@ class _DashatarPuzzleActionButtonState
 
                     unawaited(_audioPlayer.replay());
                   },
-            textColor: isLoading ? theme.defaultColor : null,
+            backgroundColor: isLoading ? PuzzleColors.superPink : null,
             child: Text(text.toString().toUpperCase()),
           ),
         ),
