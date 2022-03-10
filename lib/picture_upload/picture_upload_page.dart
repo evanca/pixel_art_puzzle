@@ -87,14 +87,18 @@ class _PictureUploadPageState extends State<PictureUploadPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                AspectRatio(
-                                  aspectRatio: 1,
-                                  child: snapshot.data?.inputCropped,
+                                Expanded(
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: snapshot.data?.inputCropped,
+                                  ),
                                 ),
                                 SizedBox(width: isSmallSize ? 8.0 : 32.0),
-                                AspectRatio(
-                                  aspectRatio: 1,
-                                  child: snapshot.data?.outputCropped,
+                                Expanded(
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: snapshot.data?.outputCropped,
+                                  ),
                                 ),
                               ],
                             ),

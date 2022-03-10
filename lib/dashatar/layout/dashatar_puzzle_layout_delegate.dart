@@ -41,16 +41,22 @@ class DashatarPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
         ? Padding(
             padding: const EdgeInsets.all(32),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const PuzzleThumbnailImage(),
-                const Spacer(),
-                NumberOfMovesAndTilesLeft(
-                  key: numberOfMovesAndTilesLeftKey,
-                  numberOfMoves: state.numberOfMoves,
-                  numberOfTilesLeft: status == DashatarPuzzleStatus.started
-                      ? state.numberOfTilesLeft
-                      : state.puzzle.tiles.length - 1,
+                const Expanded(child: PuzzleThumbnailImage()),
+                Expanded(
+                  child: FittedBox(
+                    alignment: Alignment.bottomRight,
+                    fit: BoxFit.scaleDown,
+                    child: NumberOfMovesAndTilesLeft(
+                      key: numberOfMovesAndTilesLeftKey,
+                      numberOfMoves: state.numberOfMoves,
+                      numberOfTilesLeft: status == DashatarPuzzleStatus.started
+                          ? state.numberOfTilesLeft
+                          : state.puzzle.tiles.length - 1,
+                    ),
+                  ),
                 ),
                 const DashatarCountdown(),
               ],

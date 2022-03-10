@@ -57,6 +57,7 @@ class _PuzzleThumbnailImageState extends State<PuzzleThumbnailImage> {
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: AnimatedContainer(
+                alignment: Alignment.bottomLeft,
                 width: activeSize,
                 height: activeSize,
                 curve: Curves.easeInOut,

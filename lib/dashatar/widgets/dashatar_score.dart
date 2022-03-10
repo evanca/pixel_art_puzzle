@@ -145,10 +145,16 @@ class DashatarScore extends StatelessWidget {
                         children: [
                           LeaderboardButton(),
                           const Gap(8),
-                          Text(
-                            context.l10n.leaderboard,
-                            style: PuzzleTextStyle.timerTextStyle.copyWith(
-                                color: PuzzleColors.pixelPrimary, fontSize: 18),
+                          Expanded(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                context.l10n.leaderboard,
+                                style: PuzzleTextStyle.timerTextStyle.copyWith(
+                                    color: PuzzleColors.pixelPrimary,
+                                    fontSize: 18),
+                              ),
+                            ),
                           )
                         ],
                       ),

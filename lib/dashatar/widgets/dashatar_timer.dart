@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_art_puzzle/colors/colors.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
@@ -57,14 +56,6 @@ class DashatarTimer extends StatelessWidget {
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Image.asset(
-              'assets/images/stopwatch_12px.png',
-              fit: BoxFit.contain,
-              filterQuality: FilterQuality.none,
-              width: 48,
-              height: 48,
-            ),
-            const Gap(16),
             AnimatedDefaultTextStyle(
               style: currentTextStyle.copyWith(
                 color: PuzzleColors.pixel50,

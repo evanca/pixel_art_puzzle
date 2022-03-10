@@ -27,8 +27,7 @@ class LeaderboardButton extends StatelessWidget {
           'assets/images/trophy_12px.png',
           fit: BoxFit.contain,
           filterQuality: FilterQuality.none,
-          width: 48,
-          height: 48,
+          height: 42,
         ),
       ),
     );

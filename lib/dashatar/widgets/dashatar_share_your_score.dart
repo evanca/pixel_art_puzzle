@@ -98,9 +98,15 @@ class DashatarShareYourScore extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: buttonsMainAxisAlignment,
                   children: const [
-                    DashatarTwitterButton(),
+                    Expanded(
+                        child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: DashatarTwitterButton())),
                     Gap(16),
-                    DashatarFacebookButton(),
+                    Expanded(
+                        child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: DashatarFacebookButton())),
                   ],
                 ),
               ),

@@ -10,7 +10,7 @@ class PuzzleGlassmorphicContainer extends StatelessWidget {
       this.smallWidth = 300,
       this.smallHeight = 600,
       this.largeWidth = 750,
-      this.largeHeight = 600,
+      this.largeHeight = 700,
       this.hasPadding = true,
       required this.child})
       : super(key: key);

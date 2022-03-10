@@ -35,8 +35,7 @@ class AudioControl extends StatelessWidget {
                   audioAsset,
                   fit: BoxFit.contain,
                   filterQuality: FilterQuality.none,
-                  width: 48,
-                  height: 48,
+                  height: 42,
                 );
               }),
         ),

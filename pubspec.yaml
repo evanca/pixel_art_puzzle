@@ -49,3 +49,7 @@ flutter:
     - assets/images/
     - assets/images/audio_control/
     - assets/images/difficulty/
+  fonts:
+    - family: Noto
+      fonts:
+        - asset: fonts/NotoColorEmoji.ttf

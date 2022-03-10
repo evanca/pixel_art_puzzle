@@ -79,12 +79,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                                       child: Row(
                                         children: [
                                           medalAsset != null
-                                              ? Image.asset(
-                                                  medalAsset,
-                                                  fit: BoxFit.contain,
-                                                  filterQuality:
-                                                      FilterQuality.none,
-                                                  width: 42.0,
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(2.0),
+                                                  child: Image.asset(
+                                                    medalAsset,
+                                                    fit: BoxFit.contain,
+                                                    filterQuality:
+                                                        FilterQuality.none,
+                                                    width: 42.0,
+                                                  ),
                                                 )
                                               : const SizedBox(width: 42.0),
                                           const Gap(8.0),

@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
 
     return PuzzleMultiBlocProvider(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -69,7 +70,9 @@ class HomePage extends StatelessWidget {
                           ),
                           hintText: Prefs().username.getValue()),
                       onChanged: (text) {
-                        Prefs().username.setValue(text);
+                        if (text.isNotEmpty) {
+                          Prefs().username.setValue(text);
+                        }
                       },
                     ),
                   ),

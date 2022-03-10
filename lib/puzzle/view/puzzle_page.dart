@@ -9,13 +9,13 @@ import 'package:pixel_art_puzzle/models/models.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/theme/theme.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
-import 'package:pixel_art_puzzle/widgets/glassmorphic_container.dart';
 import 'package:pixel_art_puzzle/widgets/glassmorphic_flex_container.dart';
 import 'package:pixel_art_puzzle/widgets/multi_bloc_provider.dart';
 
 import '../../app/size_helper.dart';
 import '../../preferences/preferences.dart';
 import '../../widgets/back_button.dart';
+import '../../widgets/glassmorphic_container.dart';
 import '../../widgets/leaderboard_button.dart';
 
 /// {@template puzzle_page}
@@ -99,20 +99,23 @@ class _Puzzle extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-        const PuzzleGlassmorphicContainer(
-            hasPadding: false,
-            smallWidth: double.infinity,
-            smallHeight: 150,
-            largeWidth: double.infinity,
-            largeHeight: 72,
-            child: PuzzleHeader()),
+        isSmallSize
+            ? const PuzzleGlassmorphicFlexContainer(child: PuzzleHeader())
+            : const PuzzleGlassmorphicContainer(
+                hasPadding: false,
+                smallWidth: double.infinity,
+                smallHeight: 150,
+                largeWidth: double.infinity,
+                largeHeight: 72,
+                child: PuzzleHeader()),
         PuzzleGlassmorphicFlexContainer(
+            flex: 4,
             child: Center(
-          child: ListView(
-            shrinkWrap: true,
-            children: const [PuzzleSections()],
-          ),
-        )),
+              child: ListView(
+                shrinkWrap: true,
+                children: const [PuzzleSections()],
+              ),
+            )),
       ],
     );
   }
@@ -137,55 +140,74 @@ class PuzzleHeader extends StatelessWidget {
       small: (context, child) => Padding(
         padding: EdgeInsets.all(padding),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: padding,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Image.asset(
-                  'assets/images/user_12px.png',
-                  fit: BoxFit.contain,
-                  filterQuality: FilterQuality.none,
-                  width: 48,
-                  height: 48,
-                ),
-                const Gap(16),
-                Expanded(
-                  child: Text(
-                    Prefs().username.getValue(),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.pressStart2p(fontSize: 20),
+            Expanded(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    'assets/images/user_12px.png',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.centerLeft,
+                    filterQuality: FilterQuality.none,
+                    height: 42,
                   ),
-                ),
-              ],
+                  Gap(padding),
+                  Expanded(
+                    child: FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        Prefs().username.getValue(),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.pressStart2p(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              children: [
-                const DashatarTimer(mainAxisAlignment: MainAxisAlignment.start),
-                const Spacer(),
-                LeaderboardButton(),
-                SizedBox(
-                  width: padding,
-                ),
-                AudioControl(key: audioControlKey),
-              ],
-            ),
-            SizedBox(
-              height: padding,
+            const Spacer(),
+            Expanded(
+              flex: 3,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    'assets/images/stopwatch_12px.png',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.centerLeft,
+                    filterQuality: FilterQuality.none,
+                    height: 42,
+                  ),
+                  Gap(padding),
+                  const Expanded(
+                      child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.bottomLeft,
+                    child: DashatarTimer(
+                        mainAxisAlignment: MainAxisAlignment.start),
+                  )),
+                  LeaderboardButton(),
+                  SizedBox(
+                    width: padding,
+                  ),
+                  AudioControl(key: audioControlKey),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      medium: (context, child) => Center(
+      medium: (_, child) => child!,
+      large: (_, child) => child!,
+      child: (currentSize) => Center(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Gap(padding),
             Row(
@@ -206,32 +228,14 @@ class PuzzleHeader extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const DashatarTimer(),
-            const Spacer(),
-            LeaderboardButton(),
-            Gap(padding),
-            AudioControl(key: audioControlKey),
-            Gap(padding),
-          ],
-        ),
-      ),
-      large: (context, child) => Center(
-        child: Row(
-          children: [
-            Gap(padding),
             Image.asset(
-              'assets/images/user_12px.png',
+              'assets/images/stopwatch_12px.png',
               fit: BoxFit.contain,
+              alignment: Alignment.centerLeft,
               filterQuality: FilterQuality.none,
-              width: 42,
               height: 42,
             ),
             Gap(padding),
-            Text(
-              Prefs().username.getValue(),
-              style: GoogleFonts.pressStart2p(fontSize: 20),
-            ),
-            const Spacer(),
             const DashatarTimer(),
             const Spacer(),
             LeaderboardButton(),
@@ -261,7 +265,10 @@ class PuzzleSections extends StatelessWidget {
       small: (context, child) => Column(
         children: [
           theme.layoutDelegate.startSectionBuilder(state),
-          const PuzzleBoard(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: PuzzleBoard(),
+          ),
           theme.layoutDelegate.endSectionBuilder(state, context),
         ],
       ),
@@ -269,7 +276,9 @@ class PuzzleSections extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: theme.layoutDelegate.startSectionBuilder(state),
+            child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: theme.layoutDelegate.startSectionBuilder(state)),
           ),
           const Expanded(flex: 2, child: PuzzleBoard()),
           Expanded(
@@ -278,12 +287,14 @@ class PuzzleSections extends StatelessWidget {
         ],
       ),
       large: (context, child) => Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: theme.layoutDelegate.startSectionBuilder(state),
+            child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: theme.layoutDelegate.startSectionBuilder(state)),
           ),
-          const PuzzleBoard(),
+          const Expanded(flex: 2, child: PuzzleBoard()),
           Expanded(
             child: theme.layoutDelegate.endSectionBuilder(state, context),
           ),
