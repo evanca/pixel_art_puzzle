@@ -31,6 +31,15 @@ class HomePage extends StatelessWidget {
           child: PuzzleGlassmorphicContainer(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Stack(
+                children: const [
+                  Opacity(
+                    opacity: 0,
+                    // This hack allows to preload emoji font for web
+                    child: Text('😺'),
+                  ),
+                ],
+              ),
               const SizedBox(height: 32),
               Text(context.l10n.enterPlayerName),
               SizedBox(height: isSmallSize ? 16.0 : 32.0),
