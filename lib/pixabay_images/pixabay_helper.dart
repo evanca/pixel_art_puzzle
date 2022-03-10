@@ -29,8 +29,8 @@ class PixabayHelper {
   get hasImages => _currentState.images.isNotEmpty;
 
   Future<bool> loadPictures(int cnt) async {
+    clearState();
     _currentState.loading = true;
-    _currentState.images = [];
     _state.add(_currentState);
 
     int pageNumber = Random().nextInt(50) + 1;
