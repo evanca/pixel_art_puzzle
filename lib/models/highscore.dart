@@ -93,6 +93,7 @@ class HighScore {
 
     StorageHelper().saveHighScore(map);
 
+    // Save locally in case something goes wrong with Realtime Database:
     if (initialHighScores == "") {
       // Create and save first high score:
       var highScores = [];

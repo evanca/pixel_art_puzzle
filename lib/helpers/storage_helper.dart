@@ -49,6 +49,10 @@ class StorageHelper {
       }
     }
 
+    maps.sort((a, b) => (b["score"]).compareTo(a["score"]));
+    // Keep 10 records max:
+    maps = maps.take(10).toList();
+
     highScores = maps.map((e) => HighScore.fromMap(e)).toList();
     return highScores;
   }
