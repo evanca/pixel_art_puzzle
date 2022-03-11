@@ -5,10 +5,9 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:pixel_art_puzzle/app/app.dart';
 import 'package:pixel_art_puzzle/bootstrap.dart';
@@ -24,7 +23,7 @@ Future<void> main() async {
       projectId: "pixel-art-puzzle-a1e13",
       storageBucket: "pixel-art-puzzle-a1e13.appspot.com",
       messagingSenderId: "972766593370",
-      appId: Platform.isIOS
+      appId: defaultTargetPlatform == TargetPlatform.iOS
           ? "1:972766593370:ios:919fde42a5678e0d9bf363"
           : "1:972766593370:web:820a4aa4d0ef32d49bf363",
       measurementId: "G-6ZFRTLVNYS",
