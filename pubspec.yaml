@@ -8,6 +8,7 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  flutter_native_splash: ^2.1.0
   http: ^0.13.4
   firebase_database: ^9.0.8
   firebase_core: ^1.13.1
@@ -49,3 +50,8 @@ flutter:
     - family: Noto
       fonts:
         - asset: fonts/NotoColorEmoji.ttf
+
+flutter_native_splash:
+  color: "#C1E8F3"
+  image: assets/images/launcher.png
+  android: false
