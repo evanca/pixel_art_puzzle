@@ -50,7 +50,7 @@ class SelectDifficultyPage extends StatelessWidget {
                           assetName: 'assets/images/difficulty/easy_12px.png',
                           backgroundColor: PuzzleColors.difficultyEasy,
                           difficultyLevel: difficultyLevelEasy,
-                          puzzleSize: 2,
+                          puzzleSize: 3,
                           label: context.l10n.difficulty0,
                         ),
                         DifficultyButton(

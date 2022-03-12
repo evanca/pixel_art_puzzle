@@ -76,47 +76,52 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                                           ? const EdgeInsets.all(0.0)
                                           : const EdgeInsets.fromLTRB(
                                               32, 0, 32, 16),
-                                      child: Row(
-                                        children: [
-                                          medalAsset != null
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(2.0),
-                                                  child: Image.asset(
-                                                    medalAsset,
-                                                    fit: BoxFit.contain,
-                                                    filterQuality:
-                                                        FilterQuality.none,
-                                                    width: 42.0,
-                                                  ),
-                                                )
-                                              : const SizedBox(width: 42.0),
-                                          const Gap(8.0),
-                                          Expanded(
-                                              child: Text(
-                                            highScore.username.toString(),
-                                            textAlign: TextAlign.start,
-                                            style: isSmallSize
-                                                ? PuzzleTextStyle.bodySmall
-                                                : PuzzleTextStyle.body,
-                                          )),
-                                          const Gap(8.0),
-                                          Expanded(
-                                              child: Text(
-                                            highScore.score.toString(),
-                                            textAlign: TextAlign.end,
-                                            style: isSmallSize
-                                                ? PuzzleTextStyle.bodySmall
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.bold)
-                                                : PuzzleTextStyle.body.copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          )),
-                                          Gap(isSmallSize ? 8.0 : 32.0),
-                                          Text(highScore.flag!)
-                                        ],
+                                      child: SizedBox(
+                                        height: 48,
+                                        child: Row(
+                                          children: [
+                                            medalAsset != null
+                                                ? Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            2.0),
+                                                    child: Image.asset(
+                                                      medalAsset,
+                                                      fit: BoxFit.contain,
+                                                      filterQuality:
+                                                          FilterQuality.none,
+                                                      width: 42.0,
+                                                    ),
+                                                  )
+                                                : const SizedBox(width: 42.0),
+                                            Gap(medalAsset != null ? 8 : 12),
+                                            Expanded(
+                                                child: Text(
+                                              highScore.username.toString(),
+                                              textAlign: TextAlign.start,
+                                              style: isSmallSize
+                                                  ? PuzzleTextStyle.bodySmall
+                                                  : PuzzleTextStyle.body,
+                                            )),
+                                            const Gap(8.0),
+                                            Expanded(
+                                                child: Text(
+                                              highScore.score.toString(),
+                                              textAlign: TextAlign.end,
+                                              style: isSmallSize
+                                                  ? PuzzleTextStyle.bodySmall
+                                                      .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.bold)
+                                                  : PuzzleTextStyle.body
+                                                      .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                            )),
+                                            Gap(isSmallSize ? 8.0 : 32.0),
+                                            Text(highScore.flag!)
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );
