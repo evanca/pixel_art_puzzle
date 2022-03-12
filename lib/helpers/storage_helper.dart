@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pixel_art_puzzle/models/highscore.dart';
@@ -9,15 +11,27 @@ import '../preferences/preferences.dart';
 class StorageHelper {
   FirebaseDatabase? database;
   DatabaseReference? ref;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
-  init() {
+  init() async {
+    auth.userChanges().listen((User? user) {
+      if (user == null) {
+        log('User is currently signed out!');
+      } else {
+        log('User is signed in!');
+      }
+    });
+
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInAnonymously();
+
     database = FirebaseDatabase.instance;
     ref = FirebaseDatabase.instance.ref(); //database reference object
   }
 
   saveHighScore(Map map) async {
     if (ref == null) {
-      init();
+      await init();
     }
 
     await ref?.push().set(map);
@@ -29,7 +43,7 @@ class StorageHelper {
 
     try {
       if (ref == null) {
-        init();
+        await init();
       }
 
       DatabaseEvent event = await ref!.once();

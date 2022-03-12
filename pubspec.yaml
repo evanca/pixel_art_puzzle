@@ -8,6 +8,7 @@ environment:
   flutter: 2.8.0
 
 dependencies:
+  firebase_auth: ^3.3.10
   flutter_native_splash: ^2.1.0
   http: ^0.13.4
   firebase_database: ^9.0.8
