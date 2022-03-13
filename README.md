@@ -6,7 +6,7 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 
 [![Demo](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/youtube.png)](https://youtu.be/xicvqi5lfv0)
 
-## About the project
+## 😸 About the project
 
 ### Features
 - Turning a picture into pixel art to play with
@@ -31,7 +31,7 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 
 ### What we learned
 
-## What's next
+## 😺 What's next
 ### Technical dept
 - Refactor legacy naming, e.g. "dashatar something" should be renamed to "pixel art something"
 - Add missing code description e.g. for new classes and localization strings
@@ -44,8 +44,19 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - Add username profanity filter
 - Add optional pixelating function settings: number of colors, block size
 
-### Design
-Design
+## 😻 Design
+I used a custom color palette and custom made pixel art icons for this game. I went for a 12x12px icon size for a nice pixelated effect.
+
+![Colors](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/design.png)
+
+Page design is based on combining glassmorphic background elements with pixel art assets. I feel like the glassmorphic effect harmonizes the rough edges of pixelated items creating a pleasant overall look. I also use Ubuntu and Press Start 2P Google Fonts after testing out several possible font combinations for this project. Both of these fonts are "computer" style fonts which goes well with the overall game theme and at the same time they are different enough to create a good contrast. 
+
+![Colors](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/iphone.png)
+
+There is a confetti animation to celebrate a completed puzzle.
+
+![Animation](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/animation.gif)
+
 ### References
 References
 ## Built with
