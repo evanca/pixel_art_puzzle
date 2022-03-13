@@ -4,4 +4,3 @@ Audio from Mixkit https://mixkit.co/free-sound-effects/game/ (Mixkit Sound Effec
 Confetti animation widget based on Stack Overflow post https://stackoverflow.com/questions/67223435/how-to-create-confetti-animation-in-flutter
 IP Geolocation API from https://ip-api.com/ (Acceptable Use Policy - free non-commercial use)
 Simple iPhone X Mockups from https://www.ls.graphics/free/simple-iphone-x-mockups (Free commercial and non-commercial use)
-Free iPhone 13 Mockup from https://www.graphicdesignresources.net/free-mockups/free-iphone-13-mockup-2.html (Free commercial and non-commercial use)
