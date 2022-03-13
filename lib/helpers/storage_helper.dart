@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:pixel_art_puzzle/models/highscore.dart';
 
 import '../preferences/preferences.dart';
@@ -14,27 +13,38 @@ class StorageHelper {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   init() async {
-    auth.userChanges().listen((User? user) {
-      if (user == null) {
-        log('User is currently signed out!');
-      } else {
-        log('User is signed in!');
-      }
-    });
+    try {
+      auth.userChanges().listen((User? user) {
+        if (user == null) {
+          log('User is currently signed out!');
+        } else {
+          log('User is signed in!');
+        }
+      });
 
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInAnonymously();
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInAnonymously();
 
-    database = FirebaseDatabase.instance;
-    ref = FirebaseDatabase.instance.ref(); //database reference object
+      database = FirebaseDatabase.instance;
+      ref = FirebaseDatabase.instance.ref(); //database reference object
+
+    } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
+    }
   }
 
   saveHighScore(Map map) async {
-    if (ref == null) {
-      await init();
-    }
+    try {
+      if (ref == null) {
+        await init();
+      }
 
-    await ref?.push().set(map);
+      await ref?.push().set(map);
+    } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
+    }
   }
 
   Future<List<HighScore>> retrieveHighScores() async {
@@ -46,18 +56,24 @@ class StorageHelper {
         await init();
       }
 
-      DatabaseEvent event = await ref!.once();
+      DatabaseEvent event =
+          await ref!.once().timeout(const Duration(seconds: 3), onTimeout: () {
+        throw Exception();
+      });
+
       DataSnapshot snapshot = event.snapshot;
 
-      for (var child in snapshot.children) {
-        Map<String, dynamic> data =
-            Map<String, dynamic>.from(json.decode(json.encode(child.value)));
-        maps.add(data);
+      if (snapshot.children.isNotEmpty) {
+        for (var child in snapshot.children) {
+          Map<String, dynamic> data =
+              Map<String, dynamic>.from(json.decode(json.encode(child.value)));
+          maps.add(data);
+        }
       }
     } catch (e, s) {
       // Use local storage in case something went wrong:
-      debugPrint(e.toString());
-      debugPrint(s.toString());
+      log(e.toString());
+      log(s.toString());
       if (Prefs().highScores.getValue() != '') {
         maps = jsonDecode(Prefs().highScores.getValue());
       }
