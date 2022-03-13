@@ -4,7 +4,7 @@ This app is my submission for a Flutter Puzzle Hack Challenge.
 
 The app idea was inspired by pixel art and the goal of the app is to take any picture and turn it into a retro-looking pixel art image. There is an option to use a random image or to upload your own.
 
-[![Demo](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/youtube.png)](https://youtu.be/xicvqi5lfv0)
+[![Demo Video](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/youtube.png)](https://youtu.be/xicvqi5lfv0)
 
 ## 😸 About the project
 
@@ -17,6 +17,10 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - Online leaderboard featuring top 10 results
 - Showing user country flag via IP geolocation
 - Using back button to change username / difficulty / puzzle image
+
+![Demo Upload Screen](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/Screenshot%202022-03-12%20at%2008.13.40.png)
+
+![Demo Game Board](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/Screenshot%202022-03-12%20at%2008.14.23.png)
 
 ### Offline support
 - When image API is not responding, user can still use custom image upload and proceed to play
@@ -50,7 +54,7 @@ I used a custom color palette and custom made pixel art icons for this game. I w
 
 Page design is based on combining glassmorphic background elements with pixel art assets. I feel like the glassmorphic effect harmonizes the rough edges of pixelated items creating a pleasant overall look. I also use Ubuntu and Press Start 2P Google Fonts after testing out several possible font combinations for this project. Both of these fonts are "computer" style fonts which goes well with the overall game theme and at the same time they are different enough to create a good contrast. 
 
-![Colors](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/iphone.png)
+![Design](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/iphone.png)
 
 There is a confetti animation to celebrate a completed puzzle.
 
@@ -64,4 +68,3 @@ There is a confetti animation to celebrate a completed puzzle.
 - IP Geolocation API from https://ip-api.com/ (Acceptable Use Policy - free non-commercial use)
 - Simple iPhone X Mockups from https://www.ls.graphics/free/simple-iphone-x-mockups (Free commercial and non-commercial use)
 - Free iPhone 13 Mockup from https://www.graphicdesignresources.net/free-mockups/free-iphone-13-mockup-2.html (Free commercial and non-commercial use)
-
