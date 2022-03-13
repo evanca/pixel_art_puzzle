@@ -7,7 +7,6 @@ import 'package:pixel_art_puzzle/audio_control/audio_control.dart';
 import 'package:pixel_art_puzzle/dashatar/dashatar.dart';
 import 'package:pixel_art_puzzle/helpers/helpers.dart';
 import 'package:pixel_art_puzzle/l10n/l10n.dart';
-import 'package:pixel_art_puzzle/layout/layout.dart';
 import 'package:pixel_art_puzzle/puzzle/puzzle.dart';
 import 'package:pixel_art_puzzle/timer/timer.dart';
 import 'package:pixel_art_puzzle/typography/typography.dart';
@@ -70,27 +69,7 @@ class _DashatarCountdownState extends State<DashatarCountdown> {
             context.read<PuzzleBloc>().add(const PuzzleReset());
           }
         },
-        child: ResponsiveLayoutBuilder(
-          small: (_, __) => const SizedBox(),
-          medium: (_, __) => const SizedBox(),
-          large: (_, __) =>
-              BlocBuilder<DashatarPuzzleBloc, DashatarPuzzleState>(
-            builder: (context, state) {
-              if (!state.isCountdownRunning || state.secondsToBegin > 3) {
-                return const SizedBox();
-              }
-
-              if (state.secondsToBegin > 0) {
-                return DashatarCountdownSecondsToBegin(
-                  key: ValueKey(state.secondsToBegin),
-                  secondsToBegin: state.secondsToBegin,
-                );
-              } else {
-                return const DashatarCountdownGo();
-              }
-            },
-          ),
-        ),
+        child: const SizedBox(),
       ),
     );
   }
