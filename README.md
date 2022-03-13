@@ -23,13 +23,12 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - When geolocation API is not responding, a random cat emoji will be used instead of a country flag
 - Should there be a problem with Realtime Database, user will see a local leaderboard
 
-### How we built it
-
-### Challenges we ran into
-
-### Accomplishments that we're proud of
-
-### What we learned
+### Noteworthy technologies and packages
+- Responsive design is achieved via using a combination of scrolling widgets, Expanded, FittedBox as well as ResponsiveLayoutBuilder included in the starter code.
+- The pixelating logic relies on the "image" Dart library.
+- The online leaderboard is built with a Firebase Realtime Database with an offline support based on "streaming_shared_preferences" - a reactive key-value store for Flutter projects.
+- The confetti animation is based on [this](https://stackoverflow.com/questions/67223435/how-to-create-confetti-animation-in-flutter) Stack Overflow post
+- Random image generation is implemented with the help of "pixabay_picker" package.
 
 ## 😺 What's next
 ### Technical dept
