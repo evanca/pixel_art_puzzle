@@ -56,11 +56,12 @@ There is a confetti animation to celebrate a completed puzzle.
 
 ![Animation](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/animation.gif)
 
-### References
-References
-## Built with
-What languages, frameworks, platforms, cloud services, databases, APIs, or other technologies did you use?
-## "Try it out" links
-Add links where people can try your project or see your code.
-## Please provide a description of your working puzzle
-Description
+## 😽 Credits
+- Flutter challenge starter code from Very Good Ventures in partnership with Google https://github.com/VGVentures/slide_puzzle (MIT License)
+- Nature images from Pixabay https://pixabay.com/api/ (Simplified Pixabay License - free commercial and non-commercial use)
+- Audio from Mixkit https://mixkit.co/free-sound-effects/game/ (Mixkit Sound Effects Free License - free commercial and non-commercial use)
+- Confetti animation widget based on Stack Overflow post https://stackoverflow.com/questions/67223435/how-to-create-confetti-animation-in-flutter
+- IP Geolocation API from https://ip-api.com/ (Acceptable Use Policy - free non-commercial use)
+- Simple iPhone X Mockups from https://www.ls.graphics/free/simple-iphone-x-mockups (Free commercial and non-commercial use)
+- Free iPhone 13 Mockup from https://www.graphicdesignresources.net/free-mockups/free-iphone-13-mockup-2.html (Free commercial and non-commercial use)
+
