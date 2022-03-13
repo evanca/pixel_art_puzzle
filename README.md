@@ -27,6 +27,10 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - When geolocation API is not responding, a random cat emoji will be used instead of a country flag
 - Should there be a problem with Realtime Database, user will see a local leaderboard
 
+***
+### I also created a [Medium tutorial](https://medium.com/@evanca/store-game-high-scores-in-shared-preferences-for-flutter-1abb7b77be78) on how to use Shared Preferences for storing highscores.
+***
+
 ### Noteworthy technologies and packages
 - Responsive design is achieved via using a combination of scrolling widgets, Expanded, FittedBox as well as ResponsiveLayoutBuilder included in the starter code.
 - The pixelating logic relies on the "image" Dart library.
