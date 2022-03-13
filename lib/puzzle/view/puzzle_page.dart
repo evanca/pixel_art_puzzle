@@ -93,31 +93,43 @@ class _Puzzle extends StatelessWidget {
     final isSmallSize =
         SizeHelper.getSize(context) == ResponsiveLayoutSize.small;
 
-    return Column(
-      children: [
-        if (isSmallSize)
-          const SizedBox(
-            height: 32,
-          ),
-        isSmallSize
-            ? const PuzzleGlassmorphicFlexContainer(child: PuzzleHeader())
-            : const PuzzleGlassmorphicContainer(
-                hasPadding: false,
-                smallWidth: double.infinity,
-                smallHeight: 150,
-                largeWidth: double.infinity,
-                largeHeight: 72,
-                child: PuzzleHeader()),
-        PuzzleGlassmorphicFlexContainer(
-            flex: 4,
-            child: Center(
-              child: ListView(
-                shrinkWrap: true,
-                children: const [PuzzleSections()],
+    return ResponsiveLayoutBuilder(
+        small: (_, child) => Column(children: [
+              const SizedBox(
+                height: 32,
               ),
-            )),
-      ],
-    );
+              const PuzzleGlassmorphicFlexContainer(child: PuzzleHeader()),
+              PuzzleGlassmorphicFlexContainer(
+                  flex: 4,
+                  child: Center(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: const [PuzzleSections()],
+                    ),
+                  )),
+            ]),
+        medium: (_, child) => child!,
+        large: (_, child) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 200), child: child),
+        child: (currentSize) => Column(
+              children: [
+                const PuzzleGlassmorphicContainer(
+                    hasPadding: false,
+                    smallWidth: double.infinity,
+                    smallHeight: 150,
+                    largeWidth: double.infinity,
+                    largeHeight: 72,
+                    child: PuzzleHeader()),
+                PuzzleGlassmorphicFlexContainer(
+                    flex: 4,
+                    child: Center(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: const [PuzzleSections()],
+                      ),
+                    )),
+              ],
+            ));
   }
 }
 

@@ -78,38 +78,21 @@ class DashatarPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
       child: ResponsiveLayoutBuilder(
         small: (_, child) => const SizedBox(),
         medium: (_, child) => const SizedBox(),
-        large: (_, child) => const PuzzleThumbnailImage(),
+        large: (_, child) => const SizedBox(),
       ),
     );
   }
 
   @override
   Widget boardBuilder(int size, List<Widget> tiles) {
-    return Stack(
+    return Column(
       children: [
-        Positioned(
-          top: 24,
-          left: 0,
-          right: 0,
-          child: ResponsiveLayoutBuilder(
-            small: (_, child) => const SizedBox(),
-            medium: (_, child) => const SizedBox(),
-            large: (_, child) => const DashatarTimer(),
-          ),
+        const ResponsiveGap(
+          small: 21,
+          medium: 34,
+          large: 34,
         ),
-        Column(
-          children: [
-            const ResponsiveGap(
-              small: 21,
-              medium: 34,
-              large: 96,
-            ),
-            DashatarPuzzleBoard(tiles: tiles),
-            const ResponsiveGap(
-              large: 96,
-            ),
-          ],
-        ),
+        DashatarPuzzleBoard(tiles: tiles),
       ],
     );
   }
