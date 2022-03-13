@@ -16,6 +16,7 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - Colorful confetti animation on puzzle complete
 - Online leaderboard featuring top 10 results
 - Showing user country flag via IP geolocation
+- Using back button to change username / difficulty / puzzle image
 
 ### Offline support
 - When image API is not responding, user can still use custom image upload and proceed to play
@@ -30,7 +31,19 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 
 ### What we learned
 
-### What's next for Pixel Art Puzzle
+## What's next
+### Technical dept
+- Refactor legacy naming, e.g. "dashatar something" should be renamed to "pixel art something"
+- Add missing code description e.g. for new classes and localization strings
+- Migrate rxdart classes to flutter_bloc for state management consistency
+- Detect and remove unused code
+- Add Android splash screen
+### Potential new features
+- Add privacy notice for username and country flag with sharing opt out option
+- Add settings page: credits, change username / difficulty etc.
+- Add username profanity filter
+- Add optional pixelating function settings: number of colors, block size
+
 ### Design
 Design
 ### References
