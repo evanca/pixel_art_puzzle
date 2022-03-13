@@ -4,7 +4,7 @@ This app is my submission for a Flutter Puzzle Hack Challenge.
 
 The app idea was inspired by pixel art and the goal of the app is to take any picture and turn it into a retro-looking pixel art image. There is an option to use a random image or to upload your own.
 
-[![Demo Video](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/youtube.png)](https://youtu.be/xicvqi5lfv0)
+[![Demo Video](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/youtube.png)](https://youtu.be/Eh1y7O-gBew)
 
 ## 😸 About the project
 
@@ -19,8 +19,6 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - Using back button to change username / difficulty / puzzle image
 
 ![Demo Upload Screen](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/Screenshot%202022-03-12%20at%2008.13.40.png)
-
-![Demo Game Board](https://github.com/evanca/pixel_art_puzzle/blob/master/readme/Screenshot%202022-03-12%20at%2008.14.23.png)
 
 ### Offline support
 - When image API is not responding, user can still use custom image upload and proceed to play
