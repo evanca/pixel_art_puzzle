@@ -26,7 +26,7 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - Should there be a problem with Realtime Database, user will see a local leaderboard
 
 ***
-### I also created a [Medium tutorial](https://medium.com/@evanca/store-game-high-scores-in-shared-preferences-for-flutter-1abb7b77be78) on how to use Shared Preferences for storing highscores.
+### ✨ I also created a [Medium tutorial](https://medium.com/@evanca/store-game-high-scores-in-shared-preferences-for-flutter-1abb7b77be78) on how to use Shared Preferences for storing highscores. ✨
 ***
 
 ### Noteworthy technologies and packages
@@ -35,6 +35,14 @@ The app idea was inspired by pixel art and the goal of the app is to take any pi
 - The online leaderboard is built with a Firebase Realtime Database with an offline support based on "streaming_shared_preferences" - a reactive key-value store for Flutter projects.
 - The confetti animation is based on [this](https://stackoverflow.com/questions/67223435/how-to-create-confetti-animation-in-flutter) Stack Overflow post
 - Random image generation is implemented with the help of "pixabay_picker" package.
+
+### Challenges
+The pixelated effect of app icons is achieved via using Flutter Image widget filterQuality property. When I already finished my hackathon submission, I noticed that while running a web app on mobile, the icons look blurry and low quality. This problem is specific to web + mobile and is not reproducible on Android, iOS or large screen web. After researching possible solutions, I came across this [Issue](https://github.com/flutter/flutter/issues/32274). I used a suggested hack to insert 
+
+```
+<style> flt-glass-pane { image-rendering: pixelated; } </style>
+```
+in my index.html. The _image-rendering: pixelated_ in CSS basically does the same thing as _filterQuality.none_ in Flutter. After applying this fix my app rendered as expected on all platforms including using web and PWA on mobile. If you are considering using this in your project keep in mind that the pixelated effect will be applied to all of the images, so make sure that your large images have enough resolution to look good.
 
 ## 😺 What's next
 ### Technical dept
@@ -69,4 +77,4 @@ There is a confetti animation to celebrate a completed puzzle.
 - Confetti animation widget based on Stack Overflow post https://stackoverflow.com/questions/67223435/how-to-create-confetti-animation-in-flutter
 - IP Geolocation API from https://ip-api.com/ (Acceptable Use Policy - free non-commercial use)
 - Simple iPhone X Mockups from https://www.ls.graphics/free/simple-iphone-x-mockups (Free commercial and non-commercial use)
-- Free iPhone 13 Mockup from https://www.graphicdesignresources.net/free-mockups/free-iphone-13-mockup-2.html (Free commercial and non-commercial use)
+- Game logo and icon assets created by this project author
